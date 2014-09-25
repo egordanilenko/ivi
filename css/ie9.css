@@ -1,0 +1,31 @@
+body.watch .ugc-block ul.ugc-tabs li {
+filter:progid:DXImageTransform.Microsoft.gradient(startColorstr= '#fafafa ',endColorstr= '#eeeeee ',GradientType=0);
+}
+
+body.watch .ugc-block ul.ugc-tabs li.active {
+filter:progid:DXImageTransform.Microsoft.gradient(startColorstr= '#ffffff ',endColorstr= '#ffffff ',GradientType=0);
+}
+
+body.profile .recommendations-tab .incut-line.steps-nav-wrapper .steps-nav >li .caption:before {
+content: '100 ';
+display:block;
+position:absolute;
+left:50%;
+top:40px;
+width:76px;
+height:51px;
+margin-left:-38px;
+text-align:center;
+font-size:40px;
+line-height:51px;
+opacity:0;
+}
+
+ul.reviews-list >li .review-info {
+margin-left:6px;
+}
+
+body.profile .recommendations-tab .survey tbody .head ~tr td .examples-wrapper .examples-popup .popup-inner:before {
+border-left-style:solid;
+border-right-style:solid;
+}
