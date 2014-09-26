@@ -61,6 +61,60 @@ class adminController extends controller {
 		$group->delete();
 	}
 
+	public function categories() {
+
+		$this->setTemplateName('main_admin');
+		$categories_list = sp_category::find();
+
+		return array(
+			'categories_list' => $categories_list,
+			'toJson' =>	array('categories_list')
+		);
+	}
+
+	public function category_create() {
+		$this->setContext('json');
+
+		$category = new sp_category;
+		$category->setFromArray($_POST);
+		$category->create();
+
+		return array(
+			'category'=>$category,
+		);
+	}
+
+
+	public function category_edit() {
+		$this->setContext('json');
+
+		$codeid = request::post('codeid');
+
+		$category = sp_category::get($codeid);
+		$category->setFromArray($_POST);
+		$category->update();
+
+		return array(
+			'category'=>$category,
+		);
+	}
+
+	public function category_delete() {
+		$this->setContext('json');
+
+		$codeid = request::get('codeid');
+
+		$category = sp_category::get($codeid);
+		if ( !$category ) {
+			return array(
+				'result' => 0,
+				'message' => 'Ошибка: группа не найден.'
+			);
+		}
+
+		$category->delete();
+	}
+
 	public function users() {
 
 		$this->setTemplateName('main_admin');
