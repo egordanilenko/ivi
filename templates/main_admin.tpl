@@ -13,21 +13,18 @@
 	<?php // Подключение стилей. Все стили подключаются через функцию headStyle. Если режим не дебаг, то перед отправкой в браузер, они собираются в один файл и архивируются
 		echo $this->headStyle(
 			array(
-				// 'css/vendor/bootstrap.min.css',
 				'css/vendor/bootstrap.css',
 				'css/vendor/font-awesome.min.css',
 				'css/vendor/tipsy.css',
 				'css/!plugins/morris.css',
 				'css/vendor/jquery.treetable.css',
 				'css/vendor/dataTables.bootstrap.css',
-				'css/vendor/sb-admin-2.css',
 				'js/vendor/humanejs/themes/libnotify.css',
 				'css/system.css',
 				'css/system_icons.css',
 				'css/main.css',
 				'css/vendor/validate.css',
 				'css/datepicker/daterangepicker-bs3.css',
-				/*'css/vendor/gumby.css',*/
 			)
 		);
 
@@ -53,9 +50,6 @@
 				'js/vendor/modules/exporting.js',
 				'js/elly-core.js',
 				'js/app.js',
-				'js/report.js',
-				'js/users.js',
-				'js/prizes.js',
 				// 'js/hello.js',
 				'js/vendor/validate/jquery.validate.js',
 				'js/vendor/validate/additional-methods.js',
@@ -74,11 +68,10 @@
 <body id="global_controller_<?php echo $this->getControllerName() . ' global_action_' . $this->getControllerName() . '_' . $this->getActionName(); ?>">
 
 
-<?php echo $this->widget('header'); ?>
+<?php echo $this->widget('header_admin'); ?>
 <div  style="margin-top:70px;">
 <?php echo $this->content(); ?>
 </div>
-<?php echo $this->widget('footer'); ?>
 
 
 	<!-- иконка рядом с курсором при аякс запросе -->

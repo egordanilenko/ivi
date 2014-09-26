@@ -1705,6 +1705,7 @@
                     <div class="description" itemprop="description">
                         <div class="expandable description-text" id="description-text">
                             <div class="content-wrapper">
+<a href="<?php echo $this->link('admin','index') ?>">asdasd</a>
                                 <h1>Бесплатный онлайн кинотеатр ivi.ru: фильмы в хорошем  качестве  всегда приносят настоящее удовольствие </h1>
                                 <p>Случалось ли вам отказаться от  просмотра интересного фильма из-за того, что его показывали в  неудобное время?<br>
                                     Приходилось ли искать в сети интернет,  где смотреть фильмы онлайн? А спорить с домашними из-за выбора кино для просмотра по ТВ?<br>

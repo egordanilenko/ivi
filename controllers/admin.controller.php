@@ -7,4 +7,10 @@ class adminController extends controller {
 
 	}
 
+	public function groups() {
+
+		 $this->setTemplateName('main_admin');
+
+	}
+
 }
