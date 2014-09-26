@@ -13,4 +13,16 @@ class adminController extends controller {
 
 	}
 
+	public function users() {
+
+		$this->setTemplateName('main_admin');
+		$users_list = user::find();
+
+		return array(
+			'users_list' => $users_list,
+			'toJson' =>	array('users_list')
+		);
+
+	}
+
 }
