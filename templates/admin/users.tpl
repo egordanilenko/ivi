@@ -7,7 +7,6 @@
 					<th>Логин</th>
 					<th>Пароль</th>
 					<th>ФИО</th>
-					<th>Регион</th>
 					<th>Правка</th>
 				</tr>
 			</thead>
@@ -40,13 +39,6 @@
 				</div>
 			</div>
 
-			<div class="form-group">
-				<label class="col-md-4 control-label" >Регион</label>
-				<div class="col-md-8">
-					<input name="region" type="text" class="form-control input-md" required>
-				</div>
-			</div>
-
 			<div class="clearfix"></div>
 
 			<div class="modal-footer">
@@ -70,7 +62,6 @@
 	<td>{{login}}</td>
 	<td>{{psw}}</td>
 	<td>{{fio}}</td>
-	<td>{{region}}</td>
 	<td>
 		<a href="javascript://"  title="Редактировать" class="btnEdit core_icons_16 pencil"></a>
 		<a href="javascript://"  class="btnDelete"><img src='img/no.png'></a>

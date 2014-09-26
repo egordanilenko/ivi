@@ -50,7 +50,6 @@
 				'js/vendor/modules/exporting.js',
 				'js/elly-core.js',
 				'js/app.js',
-				// 'js/hello.js',
 				'js/vendor/validate/jquery.validate.js',
 				'js/vendor/validate/additional-methods.js',
 				'js/vendor/validate/messages_ru.js',
@@ -90,18 +89,6 @@
 	</div>
 </div>
 <script type="text/javascript">
-// var tableToExcel = (function() {
-//   var uri = 'data:application/vnd.ms-excel;base64,'
-//     , template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>'
-//     , base64 = function(s) { return window.btoa(unescape(encodeURIComponent(s))) }
-//     , format = function(s, c) { return s.replace(/{(\w+)}/g, function(m, p) { return c[p]; }) }
-//   return function(table, name) {
-//     var element = $('.' + table + ':visible').html();
-//     if (!table.nodeType)
-//     var ctx = {worksheet: name || 'Worksheet', table:  element}
-//     window.location.href = uri + base64(format(template, ctx))
-//   }
-// })();
 
 	function tableToExcel(table2, asd)
 	{
@@ -120,7 +107,6 @@ function titleShow(){
  $('[title]').tooltip();
  $('.tooltip').remove();
 }
-Report.init("<?php echo $report; ?>","<?php echo date('d.m.Y'); ?>");
 </script>
 
 </body>

@@ -1,39 +1,39 @@
-var users = (function(){
+var Groups = (function(){
 
 	return {
 
 		init: function() {
 			$('#btnAdd').click(this.openCreateForm);
 			$(document).on('click', '.btnEdit', this.openEditForm);
-			$(document).on('click', '.btnDelete', this.deleteusers);
+			$(document).on('click', '.btnDelete', this.deleteGroups);
 			// $(document).on('click', '.btnSubdealerOpen', this.subdealerView);
-			this.renderusers();
+			this.renderGroups();
 
 			EllyCore.ajaxForm({
-				element: $('#users_form'),
+				element: $('#groups_form'),
 				success: function(data) {
-					users_list.push(data.user);
-					users.renderusers();
+					groups_list.push(data.group);
+					Groups.renderGroups();
 					$('#elly-modal-container').modal('hide');
 				},
 			});
 		},
 
-		renderusers: function() {
+		renderGroups: function() {
 
 			EllyCore.template({
-				element: $('#user_container'),
-				source: $('#user_list_template') ,
-				data: {users: users_list.list},
+				element: $('#group_container'),
+				source: $('#group_list_template') ,
+				data: {groups: groups_list.list},
 			});
 			titleShow();
 		},
 
 		openCreateForm: function(event) {
 			EllyCore.showAjaxForm({
-				url: EllyCore.url('admin', 'user_create'),
-				element: $('#users_form_container'),
-				title: 'Регистрация нового пользователя',
+				url: EllyCore.url('admin', 'group_create'),
+				element: $('#groups_form_container'),
+				title: 'Регистрация новой группы',
 				width: 500,
 				success:function(){
 				}
@@ -44,10 +44,10 @@ var users = (function(){
 			var codeid = $(this).parents('tr').attr('data-codeid');
 
 			EllyCore.showAjaxForm({
-				url: EllyCore.url('admin', 'user_edit'),
-				data: users_list.get(codeid),
-				element: $('#users_form_container'),
-				title: 'Редактирование пользователя',
+				url: EllyCore.url('admin', 'group_edit'),
+				data: groups_list.get(codeid),
+				element: $('#groups_form_container'),
+				title: 'Редактирование группы',
 				width: 500,
 				success: function(){
 				}
@@ -55,17 +55,17 @@ var users = (function(){
 		},
 
 
-		deleteusers: function(event) {
+		deleteGroups: function(event) {
 			if ( !EllyCore.confirm('Удалить?') ) return;
 
 			var codeid = $(this).parents('tr').attr('data-codeid');
 
 			EllyCore.ajax({
-				url: EllyCore.url('admin', 'user_delete'),
+				url: EllyCore.url('admin', 'group_delete'),
 				data: {codeid: codeid},
 				success: function(data) {
-					users_list.delete(codeid);
-					$('#user_' + codeid).remove();
+					groups_list.delete(codeid);
+					$('#group_' + codeid).remove();
 				},
 			});
 		},
