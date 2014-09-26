@@ -11,35 +11,18 @@
           <a href="" title="Фильмы онлайн">Фильмы</a>
         </div>
         <div class="sub-nav-wrapper">
-          <ul class="sub-main-nav" id="0">
+          <ul class="sub-main-nav" id="cat_0">
             <li><strong><a href="">Фильмы 2012 года</a></strong></li>
             <li class="last-section"><strong><a href="">Фильмы 2013 года</a></strong></li>
-            <li><a href="" title="">Авторское кино</a></li>
-            <li><a href="" title="">Боевики</a></li>
-            <li><a href="" title="">Военные</a></li>
-            <li><a href="" title="">Детективы</a></li>
-            <li><a href="" title="">Для детей</a></li>
-            <li><a href="" title="">Документальные</a></li>
-            <li><a href="" title="">Драмы</a></li>
-            <li><a href="" title="">Исторические</a></li>
-            <li><a href="" title="">Комедии</a></li>
-            <li><a href="" title="">Короткометражки</a></li>
-            <li><a href="" title="">Мелодрамы</a></li>
+            <?php
+            $count = 0;
+            $id = 0;
+            $cats = sp_category::find('code_sp_gruppa = 1');
+            foreach ($cats as $cat):?>
+              <?php if($count > 10){ $id++; print '</ul><ul class="sub-main-nav" id="cat_'.$id.'">';$count=0;} ?>
+              <li><a href="" title=""><?php echo $cat->category_name?></a></li>
+            <?php $count++;endforeach; ?>
           </ul>
-          <ul class="sub-main-nav" id="11">
-            <li><a href="" title="">Мировая классика</a></li>
-            <li><a href="" title="">Музыкальные</a></li>
-            <li><a href="" title="">Немое кино</a></li>
-            <li><a href="" title="">Приключения</a></li>
-            <li><a href="" title="">Советское кино</a></li>
-            <li><a href="" title="">Триллеры</a></li>
-            <li><a href="" title="">Ужасы</a></li>
-            <li><a href="" title="">Фантастика</a></li>
-            <li><a href="" title="">Фильмы-спектакли</a></li>
-            <li><a class="erotic_link" href="" title="">Эротика</a></li>
-            <li><a href="" title="">Для всей семьи</a></li>
-          </ul>
-          <ul class="sub-main-nav" id="22"></ul>
         </div>
       </li>
       <li>
@@ -48,21 +31,14 @@
         </div>
         <div class="sub-nav-wrapper">
           <ul class="sub-main-nav">
-            <li><a href="" title="">Военные</a></li>
-            <li><a href="" title="">Военные</a></li>
-            <li><a href="" title="">Детективы</a></li>
-            <li><a href="" title="">Документальные</a></li>
-            <li><a href="" title="">Драмы</a></li>
-            <li><a href="" title="">Исторические</a></li>
-            <li><a href="" title="">Комедийные</a></li>
-            <li><a href="" title="">Мелодрамы</a></li>
-            <li><a href="" title="">Приключения</a></li>
-            <li><a href="" title="">Романтические</a></li>
-            <li><a href="" title="">Триллеры</a></li>
-            <li><a href="" title="">Мистические</a></li>
-            <li><a href="" title="">Фантастические</a></li>
-            <li><a class="erotic_link" href="" title="">Эротика</a></li>
-            <li><a href="" title="">Для всей семьи</a></li>
+          <?php
+            $count = 0;
+            $id = 0;
+            $cats = sp_category::find('code_sp_gruppa = 2');
+            foreach ($cats as $cat):?>
+              <?php if($count > 10){ $id++; print '</ul><ul class="sub-main-nav" id="cat_'.$id.'">';$count=0;} ?>
+              <li><a href="" title=""><?php echo $cat->category_name?></a></li>
+            <?php $count++;endforeach; ?>
           </ul>
         </div>
       </li>
@@ -72,24 +48,14 @@
         </div>
         <div class="sub-nav-wrapper">
           <ul class="sub-main-nav">
-            <li>
-              <a href="" title="Мультфильмы аниме онлайн">Аниме</a>
-            </li>
-            <li>
-              <a href="" title="Мультфильмы для взрослых онлайн">Для взрослых</a>
-            </li>
-            <li>
-              <a href="" title="Мультфильмы для детей онлайн">Для детей</a>
-            </li>
-            <li>
-              <a href="" title="Полнометражные мультфильмы онлайн">Полнометражные</a>
-            </li>
-            <li>
-              <a href="" title="">Сериалы</a>
-            </li>
-            <li>
-              <a href="" title="Советские Мультфильмы онлайн">Советские</a>
-            </li>
+            <?php
+            $count = 0;
+            $id = 0;
+            $cats = sp_category::find('code_sp_gruppa = 3');
+            foreach ($cats as $cat):?>
+              <?php if($count > 10){ $id++; print '</ul><ul class="sub-main-nav" id="cat_'.$id.'">';$count=0;} ?>
+              <li><a href="" title=""><?php echo $cat->category_name?></a></li>
+            <?php $count++;endforeach; ?>
           </ul>
         </div>
       </li>
@@ -99,18 +65,14 @@
         </div>
         <div class="sub-nav-wrapper">
           <ul class="sub-main-nav">
-            <li><a href="" title="">Вокруг света</a></li>
-            <li><a href="" title="">Воспитание детей</a></li>
-            <li><a href="" title="">Живая природа</a></li>
-            <li><a href="" title="">Красота и здоровье</a></li>
-            <li><a href="" title="">Кулинария</a></li>
-            <li><a href="" title="">О знаменитостях</a></li>
-            <li><a href="" title="">Познавательные</a></li>
-            <li><a href="" title="">Спорт</a></li>
-            <li><a href="" title="">Увлечения</a></li>
-            <li><a href="" title="">Юмористические</a></li>
-            <li><a href="" title="">Мистические</a></li>
-            <li><a href="" title="">Для всей семьи</a></li>
+            <?php
+            $count = 0;
+            $id = 0;
+            $cats = sp_category::find('code_sp_gruppa = 4');
+            foreach ($cats as $cat):?>
+              <?php if($count > 10){ $id++; print '</ul><ul class="sub-main-nav" id="cat_'.$id.'">';$count=0;} ?>
+              <li><a href="" title=""><?php echo $cat->category_name?></a></li>
+            <?php $count++;endforeach; ?>
           </ul>
         </div>
       </li>
@@ -196,9 +158,13 @@
           </script>
           <div class="result-box" id="fast_search_result"></div>
         </form>
+       <!--  <div>
+                <a href="<?php echo $this->link('admin','index'); ?>"></a><span>Админка</span>
+        </div> -->
           <div class="profile-block">
             <div class="auth-link">
                 <span onclick="">Войти</span>
+                <a href="<?php echo $this->link('admin','index'); ?>"><span>Админка</span></a>
             </div>
           </div>
         </div>

@@ -5,6 +5,7 @@
 			<tr>
 				<th>№</th>
 				<th>Название категории</th>
+				<th>Группа</th>
 				<th></th>
 			</tr>
 		</thead>
@@ -20,6 +21,17 @@
 				<label class="col-md-4 control-label" >Название категории</label>
 				<div class="col-md-8">
 					<input name="category_name" type="text" class="form-control input-md" required>
+				</div>
+			</div>
+
+			<div class="form-category">
+				<label class="col-md-4 control-label" >Группа</label>
+				<div class="col-md-8">
+					<select name="code_sp_gruppa" class="form-control">
+					<?php foreach ($groups_list as $key => $item):?>
+						<option value="<?=$item->codeid?>"><?=$item->gruppa_name?></option>
+					<?php endforeach;?>
+					</select>
 				</div>
 			</div>
 
@@ -44,6 +56,7 @@
 <tr id="category_{{codeid}}" data-codeid="{{codeid}}">
 	<td>{{codeid}}</td>
 	<td>{{category_name}}</td>
+	<td>{{gruppa_name code_sp_gruppa}}</td>
 	<td>
 		<a href="javascript://"  title="Редактировать" class="btnEdit core_icons_16 pencil"></a>
 		<a href="javascript://"  class="btnDelete"><img src='img/no.png'></a>
@@ -52,11 +65,18 @@
 </script>
 <script type="text/javascript" src="../js/categories.js"></script>
 <script>
-$(document).ready(function() {
+	$(document).ready(function() {
 
-	Categories.init();
+		Categories.init();
 
-});
+	});
+
+	Handlebars.registerHelper('gruppa_name', function(codeid) {
+		// if(!groups_list.get(codeid))
+			return groups_list.get(codeid).gruppa_name;
+		// else
+			// return '';
+	});
 
 	Handlebars.registerPartial('category_item', $('#category_template').html());
 

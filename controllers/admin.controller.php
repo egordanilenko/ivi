@@ -65,10 +65,12 @@ class adminController extends controller {
 
 		$this->setTemplateName('main_admin');
 		$categories_list = sp_category::find();
+		$groups_list = sp_gruppa::find();
 
 		return array(
 			'categories_list' => $categories_list,
-			'toJson' =>	array('categories_list')
+			'groups_list' => $groups_list,
+			'toJson' =>	array('categories_list', 'groups_list')
 		);
 	}
 
@@ -168,6 +170,60 @@ class adminController extends controller {
 		}
 
 		$user->delete();
+	}
+
+	public function sliders() {
+
+		$this->setTemplateName('main_admin');
+		$sliders_list = slider::find();
+
+		return array(
+			'sliders_list' => $sliders_list,
+			'toJson' =>	array('sliders_list')
+		);
+	}
+
+	public function slider_create() {
+		$this->setContext('json');
+
+		$slider = new slider;
+		$slider->setFromArray($_POST);
+		$slider->create();
+
+		return array(
+			'slider'=>$slider,
+		);
+	}
+
+
+	public function slider_edit() {
+		$this->setContext('json');
+
+		$codeid = request::post('codeid');
+
+		$slider = slider::get($codeid);
+		$slider->setFromArray($_POST);
+		$slider->update();
+
+		return array(
+			'slider'=>$slider,
+		);
+	}
+
+	public function slider_delete() {
+		$this->setContext('json');
+
+		$codeid = request::get('codeid');
+
+		$slider = slider::get($codeid);
+		if ( !$slider ) {
+			return array(
+				'result' => 0,
+				'message' => 'Ошибка: слайд не найден.'
+			);
+		}
+
+		$slider->delete();
 	}
 
 }

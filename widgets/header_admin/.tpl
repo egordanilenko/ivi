@@ -26,6 +26,9 @@
             <li class="<?php if(strpos($url,'news') !== false) print 'active';?>">
               <a href="<?=$this->link('admin', 'news');?>">Новости</a>
             </li>
+            <li class="<?php if(strpos($url,'sliders') !== false) print 'active';?>">
+              <a href="<?=$this->link('admin', 'sliders');?>">Слайдер</a>
+            </li>
             <li class="<?php if(strpos($url,'users') !== false) print 'active';?>">
               <a href="<?=$this->link('admin', 'users');?>">Список пользователей</a>
             </li>
