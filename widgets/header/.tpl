@@ -8,7 +8,7 @@
     <ul class="main-nav">
       <li>
         <div class="item">
-          <a href="" title="Фильмы онлайн">Фильмы</a>
+          <a href="<?=$this->link('index','films')?>&gr=1" title="Фильмы онлайн">Фильмы</a>
         </div>
         <div class="sub-nav-wrapper">
           <ul class="sub-main-nav" id="cat_0">
@@ -27,7 +27,7 @@
       </li>
       <li>
         <div class="item">
-          <a href="" title="">Сериалы</a>
+          <a href="<?=$this->link('index','films')?>&gr=2" title="">Сериалы</a>
         </div>
         <div class="sub-nav-wrapper">
           <ul class="sub-main-nav">
@@ -44,7 +44,7 @@
       </li>
       <li>
         <div class="item">
-          <a href="" title="Мультфильмы онлайн">Мультфильмы</a>
+          <a href="<?=$this->link('index','films')?>&gr=3" title="Мультфильмы онлайн">Мультфильмы</a>
         </div>
         <div class="sub-nav-wrapper">
           <ul class="sub-main-nav">
@@ -61,7 +61,7 @@
       </li>
       <li>
         <div class="item">
-          <a href="" title="">Программы</a>
+          <a href="<?=$this->link('index','films')?>&gr=4" title="">Программы</a>
         </div>
         <div class="sub-nav-wrapper">
           <ul class="sub-main-nav">
@@ -88,6 +88,11 @@
           </ul>
         </div>
       </li>
+      <li>
+          <a href="<?=$this->link('admin','index')?>">
+              <strong class="user-name">Админка</strong>
+          </a>
+      </li>
       <li class="nav-plus">
           <div class="item"><a at_counter="[ivi_plus_premieres]" href="/premieres/">ivi+</a></div>
           <div class="sub-nav-wrapper">
@@ -102,9 +107,9 @@
     </ul>
     <div class="search-user-block">
         <div class="table-row">
-        <form id="fast_search_form" class="fast-search" method="GET" action="/search/simple/">
+        <form id="fast_search_form" class="fast-search" method="GET" action="<?=$this->link('index','search')?>">
           <div class="tools-box">
-            <input at_counter='[search_field]' name="q" type="text" value="" title="Поиск..." id="search-text" autocomplete="off">
+            <input name="res" type="text" value="" title="Поиск..." id="search-text" autocomplete="off">
             <input id="fast_search_submit" type="submit" value="">
           </div>
           <script id="content_autocomplete" type="text/x-jquery-tmpl">
@@ -158,15 +163,30 @@
           </script>
           <div class="result-box" id="fast_search_result"></div>
         </form>
-       <!--  <div>
-                <a href="<?php echo $this->link('admin','index'); ?>"></a><span>Админка</span>
-        </div> -->
           <div class="profile-block">
+          <?php if(1==1) ://если загогинен?>
+              <div class="profile-wrapper">
+                <a href="<?=$this->link('index','profile')?>">
+                  <span>7</span>
+                  <img src="img/user-avatar-default.png" alt="" class="active">
+                  <strong class="user-name">Юрий Репин</strong>
+                </a>
+                <ul class="user-info-block">
+                  <li class="billing"><div><strong><a href="#" class="buy-link">Оформить подписку</a></strong></div><div class="cash"><strong><a href="#" class="header-profile-buy-link">Пополнить счет</a></strong></div></li>
+                  <li><a href="<?=$this->link('index','profile')?>">Личный кабинет</a></li>
+                  <li><a href="<?=$this->link('index','profile')?>&profile_tab=watched">История просмотров</a></li>
+                  <li id="user-menu-favourites"><a href="<?=$this->link('index','profile')?>&profile_tab=favorites">Очередь <small>(<span id="user_menu_show_favourites_items_count">4</span>)</small></a></li>
+                  <li><a href="<?=$this->link('index','profile')?>&profile_tab=recommendations">Рекомендации</a></li>
+                  <li><a href="">Выход</a></li>
+                </ul>
+              </div>
+            <?php else: ?>
             <div class="auth-link">
                 <span onclick="">Войти</span>
-                <a href="<?php echo $this->link('admin','index'); ?>"><span>Админка</span></a>
             </div>
+          <?php endif; ?>
           </div>
+
         </div>
     </div>
 </header>

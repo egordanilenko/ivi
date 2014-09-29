@@ -4,10 +4,10 @@
     <div class="col">
         <span class="h3i">Смотрите</span>
         <ul>
-            <li><a href="">Фильмы</a></li>
-            <li><a href="">Сериалы</a></li>
-            <li><a href="">Программы</a></li>
-            <li><a href="">Мультфильмы</a></li>
+            <li><a href="<?=$this->link('index','films')?>&gr=1">Фильмы</a></li>
+            <li><a href="<?=$this->link('index','films')?>&gr=2">Сериалы</a></li>
+            <li><a href="<?=$this->link('index','films')?>&gr=3">Программы</a></li>
+            <li><a href="<?=$this->link('index','films')?>&gr=4">Мультфильмы</a></li>
             <li><a href="#" id="music_bottom_href">Музыка</a></li>
             <li><a href="">Подборки</a></li>
         </ul>
@@ -63,7 +63,7 @@
     <div class="col">
         <span class="h3i">Пользователям</span>
         <ul>
-            <li><a href="">Пользовательское соглашение</a></li>
+            <li><a href="<?=$this->link('index','agreement')?>">Пользовательское соглашение</a></li>
             <li><a href="">Политика конфиденциальности</a></li>
             <li><a href="">Что вы думаете об ivi.ru</a></li>
             <li><a href="#" id="bottom_faq_link">Часто задаваемые вопросы</a></li>

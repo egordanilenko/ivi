@@ -92,14 +92,14 @@
 		echo $this->attachScript();
 	?>
 	</head>
-	<body class="start alt-price-plates" data-auth="">
+	<body class="" data-auth="">
 	    <div class="header-wrapper header-opacity">
 		<?php echo $this->widget('header'); ?>
 	    </div>
 
-	<?php echo $this->content(); ?>
+		<?php echo $this->content(); ?>
 
-	<?php echo $this->widget('footer'); ?>
+		<?php echo $this->widget('footer'); ?>
 
 
 	<!-- иконка рядом с курсором при аякс запросе -->
