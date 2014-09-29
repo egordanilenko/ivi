@@ -8,7 +8,7 @@
     <ul class="main-nav">
       <li>
         <div class="item">
-          <a href="<?=$this->link('index','films')?>&gr=1" title="Фильмы онлайн">Фильмы</a>
+          <a href="<?=$this->link('index','films')?>Runner1" title="Фильмы онлайн">Фильмы</a>
         </div>
         <div class="sub-nav-wrapper">
           <ul class="sub-main-nav" id="cat_0">
@@ -27,7 +27,7 @@
       </li>
       <li>
         <div class="item">
-          <a href="<?=$this->link('index','films')?>&gr=2" title="">Сериалы</a>
+          <a href="<?=$this->link('index','films')?>&group=2" title="">Сериалы<?=$this->user->getId()?></a>
         </div>
         <div class="sub-nav-wrapper">
           <ul class="sub-main-nav">
@@ -44,7 +44,7 @@
       </li>
       <li>
         <div class="item">
-          <a href="<?=$this->link('index','films')?>&gr=3" title="Мультфильмы онлайн">Мультфильмы</a>
+          <a href="<?=$this->link('index','films')?>&group=3" title="Мультфильмы онлайн">Мультфильмы</a>
         </div>
         <div class="sub-nav-wrapper">
           <ul class="sub-main-nav">
@@ -61,7 +61,7 @@
       </li>
       <li>
         <div class="item">
-          <a href="<?=$this->link('index','films')?>&gr=4" title="">Программы</a>
+          <a href="<?=$this->link('index','films')?>&group=4" title="">Программы</a>
         </div>
         <div class="sub-nav-wrapper">
           <ul class="sub-main-nav">
@@ -164,7 +164,7 @@
           <div class="result-box" id="fast_search_result"></div>
         </form>
           <div class="profile-block">
-          <?php if(1==1) ://если загогинен?>
+          <?php if($this->user->getId()) ://если загогинен?>
               <div class="profile-wrapper">
                 <a href="<?=$this->link('index','profile')?>">
                   <span>7</span>
@@ -177,12 +177,12 @@
                   <li><a href="<?=$this->link('index','profile')?>&profile_tab=watched">История просмотров</a></li>
                   <li id="user-menu-favourites"><a href="<?=$this->link('index','profile')?>&profile_tab=favorites">Очередь <small>(<span id="user_menu_show_favourites_items_count">4</span>)</small></a></li>
                   <li><a href="<?=$this->link('index','profile')?>&profile_tab=recommendations">Рекомендации</a></li>
-                  <li><a href="">Выход</a></li>
+                  <li><a href="<?=$this->link('user','logout')?>">Выход</a></li>
                 </ul>
               </div>
             <?php else: ?>
             <div class="auth-link">
-                <span onclick="">Войти</span>
+                <span onclick="return openModal('auth')">Войти</span>
             </div>
           <?php endif; ?>
           </div>

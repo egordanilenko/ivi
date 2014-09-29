@@ -118,7 +118,6 @@
 		</div>
 	</div>
 	<script type="text/javascript">
-	// Report.init("<?php echo $report; ?>","<?php echo date('d.m.Y'); ?>");
 	</script>
 
 	</body>

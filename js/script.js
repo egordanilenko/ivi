@@ -9207,17 +9207,17 @@ function openModal(a, b, c) {
 	this.auth == !0 ? getCookie("have_login") ? (this.c_name != "" && setCookie(this.c_name, 1, 1), openModal("auth")) : showReg() : ($(".jqmWindow").jqm().jqmHide(), a == "social_register" && getCookie("buy") == 1 && (Runner.currentPage == "watch" || Runner.currentPage == "plus") || (a == "register_teaser" ? loadModal(a).done(function(a) {
 		$(a).jqm({
 			onHide: function(a) {
-				a.w.hide();
-				a.o.remove();
-				_gaq.push(["_trackEvent", "SiteEvents", "ClosedLP", "заглушка закрыта"]);
-				setCookie("_set_motivation_teaser", "ClosedLP", 30);
-				YAreachGoal("ClosedLP")
+				// a.w.hide();
+				// a.o.remove();
+				// _gaq.push(["_trackEvent", "SiteEvents", "ClosedLP", "заглушка закрыта"]);
+				// setCookie("_set_motivation_teaser", "ClosedLP", 30);
+				// YAreachGoal("ClosedLP")
 			},
 			onShow: function(a) {
-				a.w.show();
-				_gaq.push(["_trackEvent", "SiteEvents", "ShowedLP", "показана мотивационная заглушка"]);
-				setCookie("_set_motivation_teaser", "ShowedLP", 30);
-				YAreachGoal("ShowedLP")
+				// a.w.show();
+				// _gaq.push(["_trackEvent", "SiteEvents", "ShowedLP", "показана мотивационная заглушка"]);
+				// setCookie("_set_motivation_teaser", "ShowedLP", 30);
+				// YAreachGoal("ShowedLP")
 			}
 		}).jqmShow()
 	}) : loadModal(a).done(function(b) {
@@ -9225,6 +9225,14 @@ function openModal(a, b, c) {
 		a == "reg" && reloadCaptcha()
 	})));
 	return !1
+	// EllyCore.showAjaxForm({
+	// 	url: EllyCore.url('user', 'login'),
+	// 	element: $('#login_form_container'),
+	// 	title: 'Вход',
+	// 	width: 500,
+	// 	success:function(){
+	// 	}
+	// });
 }
 function socialAuthClick(a, b) {
 	b && $("#" + b).jqmHide();
@@ -9401,23 +9409,52 @@ function submitRegister(a) {
 }
 
 function submitLogin(a) {
-	$.ajax({
-		dataType: "json",
-		type: "POST",
-		url: "/user/ajax/login/",
-		data: $("#user_login").serialize(),
-		success: function(b) {
-			$("#error_auth_email").text("");
-			$("#error_auth_password").text("");
-			if (b.error) b.error[1] == 104 ? $("#error_auth_email").text(b.error[0]) : b.error[1] == 108 && $("#error_auth_password").text(b.error[0]);
-			else {
-				Groot.track("auth_form_success");
-				doAtRequest("auth_form_success");
-				if (a != "") window.location.href = window.location.href + "#" + a;
-				getCookie("gift") ? window.location.href = "/gift/activate/" : window.location.reload(!0)
-			}
-		}
-	})
+		var email = $('#elem_auth_email').val();
+		var pass = $('#elem_auth_password').val();
+
+		console.log(email)
+		EllyCore.ajax({
+			url: EllyCore.url('user', 'login'),
+			data: {email: email, pass: pass, context: 'json'},
+			success: function(data) {
+				console.log(data.error)
+				$("#error_auth_email").html("");
+				$("#error_auth_password").html("");
+				if (data.error == 1)
+				{
+				 	$("#error_auth_password").html(data.message);
+				}
+				else {
+				 	console.log('okey')
+				 	$('#elem_auth_email').val('');
+				 	$('#elem_auth_password').val('');
+					// window.location.reload();
+				}
+			},
+		});
+	// $.ajax({
+	// 	dataType: "json",
+	// 	type: "POST",
+	// 	url: EllyCore.url('user', 'login'),
+	// 	data: $("#user_login").serialize(),
+	// 	success: function(b) {
+	// 		console.log(b.message)
+	// 		$("#error_auth_email").text("");
+	// 		$("#error_auth_password").text("");
+	// 		if (b.error == 1)
+	// 		 	$("#error_auth_password").text(b.message);
+	// 		else {
+	// 			// Groot.track("auth_form_success");
+	// 			// doAtRequest("auth_form_success");
+	// 			// if (a != "") window.location.href = window.location.href + "#" + a;
+	// 			// getCookie("gift") ? window.location.href = "/gift/activate/" : window.location.reload(!0)
+	// 			// location.reload();
+	// 		}
+	// 	},
+	// 	error: function(){
+	// 		console.log('as2d')
+	// 	}
+	// })
 }
 function submitRecover() {
 	var a = $("#pwrecover_button").attr("disabled", "disabled").addClass("disabled");

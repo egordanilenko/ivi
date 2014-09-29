@@ -16,7 +16,7 @@ class controller {
 		$this->controllerName = $controllerName;
 		$this->actionName = $actionName;
 
-		if ( !$this->user->getId() && $this->getControllerName()!=='user' && $this->getActionName()!=='login' ) {
+		if ( !$this->user->getId() && $this->getControllerName()!=='index' && $this->getActionName()!=='index' ) {
 			$this->redirect('user', 'login');
 		}
 	}

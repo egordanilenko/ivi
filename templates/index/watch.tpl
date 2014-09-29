@@ -75,143 +75,140 @@ $(function() {
 
 </script><div class="content-line watch-top paid">
     <div class="watch-top-main">
-<ul class="breadcrumbs-nav">
-    <li><a href="/">Главная</a></li>
-    <li>
-            <a href="/videos/all/movies/all/by_day/">Фильмы</a>
-    </li>    <li>
-            <a href="/videos/all/movies/boeviki/by_day/">Боевики</a>
-    </li>    <li>
-            Властелин колец: Возвращение Короля смотреть онлайн    </li></ul>
         <div class="poster">
-    <div class="image"><img src="http://thumbs.ivi.ru/f32.vcp.digitalaccess.ru/contents/2/5/c89a915e7ea4963252be7491d25e0a.jpg/172x264/" alt="Властелин колец: Возвращение Короля" itemprop="image"></div><div class="scale-rating-block main-rating-block">
-        <div class="scale-rating shareable size16 unvoted">
-<div style="width:
-87%"></div>    <ul
-data-id="64239">
-        <li class="rate1" data-id="1"><a href="#"><em></em></a></li>
-        <li class="rate2" data-id="2"><a href="#"><em></em></a></li>
-        <li class="rate3" data-id="3"><a href="#"><em></em></a></li>
-        <li class="rate4" data-id="4"><a href="#"><em></em></a></li>
-        <li class="rate5" data-id="5"><a href="#"><em></em></a></li>
-        <li class="rate6" data-id="6"><a href="#"><em></em></a></li>
-        <li class="rate7" data-id="7"><a href="#"><em></em></a></li>
-        <li class="rate8" data-id="8"><a href="#"><em></em></a></li>
-        <li class="rate9" data-id="9"><a href="#"><em></em></a></li>
-        <li class="rate10" data-id="10"><a href="#"><em></em></a></li>
-    </ul>        </div>
-            <div class="scale-rating-caption">
-                <span>Поставьте оценку фильму</span>
-                <span>Властелин колец: Возвращение Короля</span>
+            <div class="image">
+                <img src="<?=$curr_film->cover?>" alt="<?=$curr_film->film_name?>" itemprop="image"></div><div class="scale-rating-block main-rating-block">
+                <div class="scale-rating shareable size16 unvoted">
+                    <div style="width: <?=$curr_film->raiting?>%"></div>
+                    <ul data-id="64239">
+                        <li class="rate1" data-id="1"><a href="#"><em></em></a></li>
+                        <li class="rate2" data-id="2"><a href="#"><em></em></a></li>
+                        <li class="rate3" data-id="3"><a href="#"><em></em></a></li>
+                        <li class="rate4" data-id="4"><a href="#"><em></em></a></li>
+                        <li class="rate5" data-id="5"><a href="#"><em></em></a></li>
+                        <li class="rate6" data-id="6"><a href="#"><em></em></a></li>
+                        <li class="rate7" data-id="7"><a href="#"><em></em></a></li>
+                        <li class="rate8" data-id="8"><a href="#"><em></em></a></li>
+                        <li class="rate9" data-id="9"><a href="#"><em></em></a></li>
+                        <li class="rate10" data-id="10"><a href="#"><em></em></a></li>
+                    </ul>
+                </div>
+                <div class="scale-rating-caption">
+                    <span>Поставьте оценку фильму</span>
+                    <span><?=$curr_film->film_name?></span>
+                </div>
+                <div class="scale-rating-share">
+                   <input type="checkbox" name="rating-share-friend" class="nice-checkbox" id="rating-share-friend" value="on" checked>
+                   <label for="rating-share-friend">Опубликовать в моих социальных сетях</label>
+                </div>
             </div>
-    <div class="scale-rating-share">
-       <input type="checkbox" name="rating-share-friend" class="nice-checkbox" id="rating-share-friend" value="on" checked>
-       <label for="rating-share-friend">Опубликовать в моих социальных сетях</label>
-    </div></div>        </div>
-        <div class="text-content">
-    <meta itemprop="name" content="Властелин колец: Возвращение Короля"/>
-<div class="title">
-
-    <h1>Властелин колец: Возвращение Короля смотреть онлайн</h1>
-        <small> — <span itemprop="alternativeHeadline">The Lord of the Rings: The Return of the King</span></small>
-
-</div><div class="tags">
-2003, США, <span itemprop="genre">Боевики</span>,&#32;<span itemprop="genre">Для всей семьи</span>,&#32;<span itemprop="genre">Приключения</span>,&#32;<span itemprop="genre">Драмы</span>, 193&nbsp;минуты	<meta content="PT3H12M40S" itemprop="duration"></div>
-        <div class="action-button-wrapper main-button-wrapper">
-            <a href="#play" class="action-button large bright gradient buy-button" itemprop="url"
-               data-right="tvod"
-               data-content-id="64239"
-               data-back-url="L3dhdGNoLzY0MjM5P3JuZD01MzQ5MTg2YzBiNDUz"
-               data-can-buy="0"
-                    >Смотреть за 99 рублей</a>
         </div>
-<ul class="paid-links">
-    <li><a href="/premieres/">Все блокбастеры</a></li>
-    <li><a href="/info/-/faq/" class="faq"></a></li>
-</ul><div class="paid-text">
-<p>Время просмотра ограничено: 30 дней с момента покупки или 2 дня с момента запуска просмотра.</p></div>        </div>
+        <div class="text-content">
+            <meta itemprop="name" content="<?=$curr_film->film_name?>"/>
+            <div class="title">
+                <h1><?=$curr_film->film_name?> смотреть онлайн</h1>
+                    <small> — <span itemprop="alternativeHeadline"><?=$curr_film->node?></span></small>
+            </div>
+            <div class="tags">
+            <?=$curr_film->year?>, <?=$curr_film->country?>, <span itemprop="genre">Боевики</span>,&#32;<span itemprop="genre">Для всей семьи</span>,&#32;<span itemprop="genre">Приключения</span>,&#32;<span itemprop="genre">Драмы</span>,
+             <?=$curr_film->duration?>&nbsp;минуты	<meta content="PT3H12M40S" itemprop="duration"></div>
+            <div class="action-button-wrapper main-button-wrapper">
+                <a href="#play" class="action-button large bright gradient buy-button" itemprop="url"
+                   data-right="tvod"
+                   data-content-id="64239"
+                   data-back-url="L3dhdGNoLzY0MjM5P3JuZD01MzQ5MTg2YzBiNDUz"
+                   data-can-buy="0">Смотреть <?=(($curr_film->price>0) ? 'за '.$curr_film->price.' рублей': "")?></a>
+            </div>
+            <ul class="paid-links">
+                <li><a href="/premieres/">Все блокбастеры</a></li>
+                <li><a href="/info/-/faq/" class="faq"></a></li>
+            </ul>
+            <div class="paid-text">
+                <p>Время просмотра ограничено: 30 дней с момента покупки или 2 дня с момента запуска просмотра.</p>
+            </div>
+        </div>
     </div>
 
     <div class="text-content">
-<ul class="actions-secondary">
-                    <li id="start-trailer">
-                        <a href="#" class="active action-button gradient watch-trailer">Смотреть трейлер</a>
-                            <a href="#" class="active action-button gradient watch-film" style="display: none;">Смотреть фильм</a>
+        <ul class="actions-secondary">
+            <li id="start-trailer">
+                <a href="#" class="active action-button gradient watch-trailer">Смотреть трейлер</a>
+                <a href="#" class="active action-button gradient watch-film" style="display: none;">Смотреть фильм</a>
+            </li>
+            <li>
+                <a href="#" data-id="64239" id="button-favorite" class="action-button dim gradient">В очередь</a>
+            </li>
+            <li>
+                <a href="#" id="reviews-scroll-top" class="action-button dim gradient">
+                        Написать рецензию
+                </a>
+            </li>
+            <li>
+                <a href="#" id="view-comments" class="action-button dim gradient">
+                Комментарии: 1    </a>
+            </li>
+        </ul>
+        <div class="share-block">
+            <form onsubmit="return false" method="post" action="" class="share-code-form">
+                <div>
+                    <!-- <label for="elem_blogcode">Код вставки:</label> -->
+                   <!--  <input type="text" value="&lt;iframe src=&quot;http://www.ivi.ru/external/stub/?videoId=64239&amp;subsiteId=138&quot; width=&quot;640&quot; height=&quot;360&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;
+            &lt;div style=&quot;top:-200px; z-index:-1; position: relative;&quot;&gt;&lt;a href=&quot;http://www.ivi.ru<?=$this->link('index','watch').'&film='?>64239&quot;&gt;<?=$curr_film->film_name?>&lt;/a&gt;&lt;/div&gt;" onclick="this.select()" onfocus="this.select()" id="elem_blogcode"> -->
+                    </div>
+            </form>
+            <script src="//yandex.st/share/share.js" charset="utf-8"></script>
+             <div class="yashare-auto-init"
+                  data-yashareL10n="ru"
+                  data-yashareType="button"
+                  data-yashareQuickServices="vkontakte,moimir,facebook,gplus,twitter,surfingbird">
+            </div>
+        </div>
+        <div class="description">
+            <div class="expandable description-text">
+                <div class="content-wrapper"  itemprop="description">
+                    <p><?=$curr_film->desciption?></p>
+                </div>
+            </div>
+        </div>
+        <script>
+            textExpander('.description-text', 5 * 18);
+        </script>
+        <div id="device-block"></div>
+        <div class="details">
+            <div id="content_ratings" style="display:block;">
+                <span class="h3i">Рейтинги:</span>
+                <ul class="rating-list cblock">
+                        <li>
+                            IMDb: <strong>8,9</strong>
+                        </li>
+                        <li>
+                            Кинопоиск: <strong>8,6</strong>
+                        </li>
+                        <li itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+                            ivi.ru: <strong><meta itemprop="ratingValue" content="8.7">8.7</strong>
+                            <small>(<meta itemprop="ratingCount" content="1419">1419)</small>
+                            <meta itemprop="bestRating" content="10">
+                        </li>
+                    <li id="afisha_rating">
+                        <script type="text/x-jquery-tmpl"  id="afisha_rating_tpl">
+                            Афиша <strong>${rating} из 5</strong>
+                        </script>
                     </li>
-    <li><a href="#"
- data-id="64239" id="button-favorite" class="action-button dim gradient">В очередь</a></li>
-
-<li>
-    <a href="#" id="reviews-scroll-top" class="action-button dim gradient">
-            Написать рецензию
-    </a>
-</li>
-<li>
-    <a href="#" id="view-comments" class="action-button dim gradient">
-            Комментарии: 1    </a>
-</li>
-
-</ul><div class="share-block">
-    <form onsubmit="return false" method="post" action="" class="share-code-form">
-        <div>
-            <label for="elem_blogcode">Код вставки:</label>
-            <input type="text" value="&lt;iframe src=&quot;http://www.ivi.ru/external/stub/?videoId=64239&amp;subsiteId=138&quot; width=&quot;640&quot; height=&quot;360&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;
-&lt;div style=&quot;top:-200px; z-index:-1; position: relative;&quot;&gt;&lt;a href=&quot;http://www.ivi.ru<?=$this->link('index','watch').'&film='?>64239&quot;&gt;Властелин колец: Возвращение Короля&lt;/a&gt;&lt;/div&gt;" onclick="this.select()" onfocus="this.select()" id="elem_blogcode">
-        </div>
-    </form>
-    <script src="//yandex.st/share/share.js" charset="utf-8"></script>
-         <div class="yashare-auto-init"
-              data-yashareL10n="ru"
-              data-yashareType="button"
-              data-yashareQuickServices="vkontakte,moimir,facebook,gplus,twitter,surfingbird"></div>
-</div><div class="description">
-    <div class="expandable description-text">
-        <div class="content-wrapper"  itemprop="description">
-            <p>Заключительная часть невероятной трилогии по культовому роману Толкина, получившая одиннадцать премий «Оскар». Фильм «Властелин колец: Возвращение короля», повторивший рекорд «Титаника» и первую в истории американской киноакадемии фэнтези-картину, которая стала лауреатом в номинации «Лучший фильм года», можно посмотреть онлайн в нашем интернет-кинотеатре.<br />
-Средиземье все больше погружается во мрак: темные силы захватывают все новые и новые территории. Саурон осаждает Минас-Тирит, защитники уже истощены: люди, хоббиты и эльфы теряют последнюю надежду на победу. На вооружении темных сил страшные назгулы, которые перемещаются на летающих существах и своими криками внушают ужас самым смелым защитникам крепости. Единственная надежда на спасение Средиземья – хоббиты. Сэм и Фродо упорно идут к своей цели. Роковая гора, пламя которой сможет уничтожить кольцо всевластия, все ближе. Голлум по-прежнему ведет маленьких героев, только Сэм уверен, что доверять этому помощнику не стоит, власть кольца над ним все растет.</p>                <p>
-Фильм Властелин колец: Возвращение Короля вы можете смотреть онлайн на нашем сайте в хорошем качестве. Приятного просмотра!                </p>
-        </div>
-
-    </div>
-</div>
-<script>
-    textExpander('.description-text', 5 * 18);
-</script><div id="device-block"></div><div class="details">
-
-<div id="content_ratings" style="display:block;">
-
-    <span class="h3i">Рейтинги:</span>
-
-    <ul class="rating-list cblock">
-            <li>
-                IMDb: <strong>8,9</strong>
-            </li>
-            <li>
-                Кинопоиск: <strong>8,6</strong>
-            </li>
-            <li itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
-                ivi.ru: <strong><meta itemprop="ratingValue" content="8.7">8.7</strong>
-                <small>(<meta itemprop="ratingCount" content="1419">1419)</small>
-                <meta itemprop="bestRating" content="10">
-            </li>
-        <li id="afisha_rating">
-            <script type="text/x-jquery-tmpl"  id="afisha_rating_tpl">
-                Афиша <strong>${rating} из 5</strong>
-            </script>
-        </li>
-    </ul>
-</div>
-    <span class="h3i">
-            Режиссер:
-    </span>
-    <div class="cblock" itemprop="director" itemscope itemtype="http://schema.org/Person">
-<span class="itemprop" itemprop="name"><a href="/person/piter_dzhekson" itemprop="url">Питер Джексон</a></span>    </div>
-    <span class="h3i">
-            Актеры:
-    </span>
-    <div class="cblock" itemprop="actors" itemscope itemtype="http://schema.org/Person">
-<span class="itemprop" itemprop="name"><a href="/person/endi_serkis" itemprop="url">Энди Серкис</a></span>,&#32;<span class="itemprop" itemprop="name"><a href="/person/Sean-Bean-6492" itemprop="url">Шон Бин</a></span>,&#32;<span class="itemprop" itemprop="name"><a href="/person/Cate-Blanchett-904" itemprop="url">Кейт Бланшетт</a></span>,&#32;<span class="itemprop" itemprop="name"><a href="/person/Ian-McKellen-634" itemprop="url">Иэн МакКеллен</a></span>,&#32;<span class="itemprop" itemprop="name"><a href="/person/miranda_otto" itemprop="url">Миранда Отто</a></span>,&#32;<span class="itemprop" itemprop="name"><a href="/person/liv_tajler" itemprop="url">Лив Тайлер</a></span>,&#32;<span class="itemprop" itemprop="name"><a href="/person/karl_urban" itemprop="url">Карл Урбан</a></span>,&#32;<span class="itemprop" itemprop="name"><a href="/person/hyugo_uiving" itemprop="url">Хьюго Уивинг</a></span>,&#32;<span class="itemprop" itemprop="name"><a href="/person/Billy-Boyd-11233" itemprop="url">Билли Бойд</a></span>,&#32;<span class="itemprop" itemprop="name"><a href="/person/Elijah-Wood-503" itemprop="url">Элайджа Вуд</a></span>,&#32;<span class="itemprop" itemprop="name"><a href="/person/viggo_mortensen" itemprop="url">Вигго Мортенсен</a></span>,&#32;<span class="itemprop" itemprop="name">Джош Вуд</span>,&#32;<span class="itemprop" itemprop="name">Шон Эстин</span>,&#32;<span class="itemprop" itemprop="name">Доминик Монахэн</span>,&#32;<span class="itemprop" itemprop="name">Орландо Блум</span>,&#32;<span class="itemprop" itemprop="name">Ноэль Эпплби</span>,&#32;<span class="itemprop" itemprop="name">Дэвид Уэнэм</span>,&#32;<span class="itemprop" itemprop="name">Александра Эстин</span>,&#32;<span class="itemprop" itemprop="name">Дэвид Эстон</span>,&#32;<span class="itemprop" itemprop="name">Джон Бах</span>,&#32;<span class="itemprop" itemprop="name">Сэдвин Брофи</span>    </div>
-    <span class="h3i">В цифрах:</span>
+                </ul>
+            </div>
+            <span class="h3i">
+                 Режиссер:
+            </span>
+            <div class="cblock" itemprop="director" itemscope itemtype="http://schema.org/Person">
+                <span class="itemprop" itemprop="name"><?=$curr_film->director?></span>
+            </div>
+            <span class="h3i">
+                Актеры:
+            </span>
+            <div class="cblock" itemprop="actors" itemscope itemtype="http://schema.org/Person">
+                <span class="itemprop" itemprop="name"><?=$curr_film->actors?></span>
+            </div>
+ <!--    <span class="h3i">В цифрах:</span>
     <ul class="cblock">
             <li class="ccol">
                 <span>Бюджет:</span>
@@ -221,7 +218,7 @@ data-id="64239">
                 <span>Сборы:</span>
                 <span>$1 119 110 941</span>
             </li>
-    </ul>
+    </ul> -->
 
 </div>
     </div>
@@ -242,7 +239,7 @@ visibility: visible!important;
 
 <div class="incut-line films-gallery-wrapper">
 
-        <span class="h2i">Вместе с «Властелин колец: Возвращение Короля» также смотрят:</span>
+        <span class="h2i">Вместе с «<?=$curr_film->film_name?>» также смотрят:</span>
 
         <ul class="films-gallery medium light bordered list" data-wsource="watch_recommendations">
             <li id="content-64238" class="recommended_element recommended_action_set has_popup" data-type="content" data-id="64238">
@@ -929,7 +926,7 @@ visibility: visible!important;
 
 </div>
     <div class="selections-block content-line clear-line-wrapper" id="video_block_selections">
-        <div class="block-head"><span class="h2i">&laquo;Властелин колец: Возвращение Короля&raquo; в подборках</span></div>
+        <div class="block-head"><span class="h2i">&laquo;<?=$curr_film->film_name?>&raquo; в подборках</span></div>
         <div class="selections-gallery all-selections">
             <ul class="list" data-wsource="watch_podborki">
     <li id="selection-1084">
@@ -1023,7 +1020,7 @@ visibility: visible!important;
     <div class="content-line">
         <div class="main-col ugc-block">
     <a id="reviews"></a>
-    <span class="h2i ugc-block-title">Рецензии, комментарии и отзывы к видео фильму &laquo;Властелин колец: Возвращение Короля&raquo;</span>    <ul class="ugc-tabs">
+    <span class="h2i ugc-block-title">Рецензии, комментарии и отзывы к видео фильму &laquo;<?=$curr_film->film_name?>&raquo;</span>    <ul class="ugc-tabs">
         <li id="reviewstab">
                 <a href="#reviews">Написать рецензию</a>
         </li>
@@ -1136,7 +1133,7 @@ data-id="64239">
         <div class="text-content" itemprop="description">
             ${text} <a href="${url}" target="_blank">Подробнее</a>
         </div>
-        <div class="all_reviews_form_afisha"><a href="${allURL}" target="_blank">Все рецензии «Афиши» на фильм «Властелин колец: Возвращение Короля»</a></div>
+        <div class="all_reviews_form_afisha"><a href="${allURL}" target="_blank">Все рецензии «Афиши» на фильм «<?=$curr_film->film_name?>»</a></div>
     </div>
 </li>
 </script>            <div class="wrap-url-all-reviews">
