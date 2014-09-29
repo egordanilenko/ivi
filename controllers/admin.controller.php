@@ -7,6 +7,62 @@ class adminController extends controller {
 
 	}
 
+	public function Films() {
+
+		$this->setTemplateName('main_admin');
+		$Film_list = Film::find();
+
+		return array(
+			'Film_list' => $Film_list,
+			'toJson' =>	array('Film_list')
+		);
+	}
+
+	public function Film_create() {
+		$this->setContext('json');
+
+		$Film = new Film;
+		$Film->setFromArray($_POST);
+		$Film->create();
+
+		return array(
+			'Film'=>$Film,
+		);
+	}
+
+
+	public function Film_edit() {
+		$this->setContext('json');
+
+		$codeid = request::post('codeid');
+
+		$Film = Film::get($codeid);
+		$Film->setFromArray($_POST);
+		$Film->update();
+
+		return array(
+			'Film'=>$Film,
+		);
+	}
+
+	public function Film_delete() {
+		$this->setContext('json');
+
+		$codeid = request::get('codeid');
+
+		$Film = Film::get($codeid);
+		if ( !$Film ) {
+			return array(
+				'result' => 0,
+				'message' => 'Ошибка: группа не найден.'
+			);
+		}
+
+		$Film->delete();
+	}
+
+
+
 	public function groups() {
 
 		$this->setTemplateName('main_admin');
