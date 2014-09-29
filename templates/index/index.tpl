@@ -90,8 +90,43 @@ $(document).ready(function($) {
                                             <img src="/upload/covers/asd.jpg" alt="<?=$film->film_name?>">
                                             <span class="overlay"></span>
                                         </a>
-                                        <div class="xinfo" id="<?=$film->codeid?>2">
-                                            <div class="xinfo-loading"></div>
+                                        <div class="xinfo" id="cat_xinfo_<?=$film->codeid?>1">
+                                           <h3><?=$film->film_name?></h3>
+                                            <div class="tags">
+                                                <div class="tags"><?=$film->year?>, <?=$film->country?>, <?=$film->codeid?></div>
+                                            </div>
+                                            <div class="action-button-wrapper">
+                                                <a href="<?=$this->link('index','watch').'&film='?><?=$film->codeid?>" class="action-button gradient icon-view button-view view_link">Смотреть</a>
+                                                <a href="#" data-id="<?=$this->link('index','watch').'&film='?><?=$film->codeid?>" class="action-button dim gradient icon-favorite button-favorite fav">В очередь</a>
+                                            </div>
+                                            <div class="rating-list">
+                                                <span class="h3i">Рейтинги:</span>
+                                                <ul>
+                                                   <!--  <li>
+                                                        Кинопоиск: <strong>7,0</strong>
+                                                    </li>
+                                                    <li>
+                                                        IMDb: <strong>6,4</strong>
+                                                    </li> -->
+                                                    <li>
+                                                        ivi.ru: <strong><?=$film->raiting/10?></strong>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="wrap-text-xinfo">
+                                                <div class="directors">
+                                                    <span class="h3i">Режиссер:</span>
+                                                    <?=$film->director?>
+                                                </div>
+                                                <div class="actors">
+                                                    <span class="h3i">Актеры:</span>
+                                                    <?=$film->actors?>
+                                                </div>
+                                                <div class="text">
+                                                    <?=$film->description?>
+                                                </div>
+                                            </div>
+                                            <span class="root"></span>
                                         </div>
                                     </div>
                                     <strong>
@@ -121,8 +156,43 @@ $(document).ready(function($) {
                                             <img src="/upload/covers/asd.jpg" alt="<?=$film->film_name?>">
                                             <span class="overlay"></span>
                                         </a>
-                                        <div class="xinfo" id="<?=$film->codeid?>2">
-                                            <div class="xinfo-loading"></div>
+                                        <div class="xinfo" id="cat_xinfo_<?=$film->codeid?>1">
+                                           <h3><?=$film->film_name?></h3>
+                                            <div class="tags">
+                                                <div class="tags"><?=$film->year?>, <?=$film->country?>, <?=$film->codeid?></div>
+                                            </div>
+                                            <div class="action-button-wrapper">
+                                                <a href="<?=$this->link('index','watch').'&film='?><?=$film->codeid?>" class="action-button gradient icon-view button-view view_link">Смотреть</a>
+                                                <a href="#" data-id="<?=$this->link('index','watch').'&film='?><?=$film->codeid?>" class="action-button dim gradient icon-favorite button-favorite fav">В очередь</a>
+                                            </div>
+                                            <div class="rating-list">
+                                                <span class="h3i">Рейтинги:</span>
+                                                <ul>
+                                                   <!--  <li>
+                                                        Кинопоиск: <strong>7,0</strong>
+                                                    </li>
+                                                    <li>
+                                                        IMDb: <strong>6,4</strong>
+                                                    </li> -->
+                                                    <li>
+                                                        ivi.ru: <strong><?=$film->raiting/10?></strong>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="wrap-text-xinfo">
+                                                <div class="directors">
+                                                    <span class="h3i">Режиссер:</span>
+                                                    <?=$film->director?>
+                                                </div>
+                                                <div class="actors">
+                                                    <span class="h3i">Актеры:</span>
+                                                    <?=$film->actors?>
+                                                </div>
+                                                <div class="text">
+                                                    <?=$film->description?>
+                                                </div>
+                                            </div>
+                                            <span class="root"></span>
                                         </div>
                                     </div>
                                     <strong>
@@ -180,7 +250,7 @@ $(document).ready(function($) {
                     <div class="description" itemprop="description">
                         <div class="expandable description-text" id="description-text">
                             <div class="content-wrapper">
-<a href="<?php echo $this->link('admin','index') ?>">asdasd</a>
+                                <a href="<?php echo $this->link('admin','index') ?>">asdasd</a>
                                 <h1>Бесплатный онлайн кинотеатр ivi.ru: фильмы в хорошем  качестве  всегда приносят настоящее удовольствие </h1>
                                 <p>Случалось ли вам отказаться от  просмотра интересного фильма из-за того, что его показывали в  неудобное время?<br>
                                     Приходилось ли искать в сети интернет,  где смотреть фильмы онлайн? А спорить с домашними из-за выбора кино для просмотра по ТВ?<br>
@@ -202,8 +272,7 @@ $(document).ready(function($) {
                         </div>
                     </div>
                 </div>
-                <div class="content-line" id="recommendation_explanation"
-                     >
+                <div class="content-line" id="recommendation_explanation">
                     <div class="incut-line-wrapper">
                         <div class="incut-line recommend-related films-gallery-wrapper">
                             <span class="h2i">Рекомендуем лично вам</span>
@@ -212,13 +281,15 @@ $(document).ready(function($) {
                             </ul>
                         </div>
                     </div>
-                </div>            <div class="content-line advert-wide" id="start_adriver_banner_wide" title=""></div>
+                </div>
+                <div class="content-line advert-wide" id="start_adriver_banner_wide" title=""></div>
                 <script>
                     new adriver("start_adriver_banner_wide", {sid:147544, bt:52, sz:"indexrast"});
-                </script>            <div class="content-line">
-                    <div class="incut-line-wrapper bright"><div class="incut-line watching-now"
-                                                                >
-                            <span class="h2i">Блокбастеры ivi+</span>
+                </script>
+                <div class="content-line">
+                    <div class="incut-line-wrapper bright">
+                    <div class="incut-line watching-now">
+                        <span class="h2i">Блокбастеры ivi+</span>
                             <div class="gallery-wrapper">
                                 <span class="scroll-button prev" id="watching_now_prev"></span>
                                 <span class="scroll-button next" id="watching_now_next"></span>
@@ -3223,3 +3294,117 @@ $(document).ready(function($) {
 
         <div id="flash_updater" class="flash-updater"></div></div>
 </div>
+<auth>
+<div id="modal_auth" class="modal_window modal_auth jqmWindow">
+    <div class="modal-wrapper">
+        <span class="h2i">Вход на ivi.ru</span>
+            <ul class="aux-links">
+                <li><a href="#" at_auth="auth_form_reg_click" onclick="return openModal('reg')">Зарегистрироваться на ivi.ru</a></li>
+            </ul>
+            <form action="<?=$this->link('user', 'login')?>" method="post" id="user_login" class="ng-pristine ng-valid">
+                <ol>
+                    <li>
+                        <label for="elem_auth_email" class="block">E-mail</label>
+                        <input type="text" name="email" id="elem_auth_email" class="text">
+                        <div id="error_auth_email" class="error"></div>
+                    </li>
+                    <li>
+                        <label for="elem_auth_password" class="block">Пароль</label>
+                        <input type="password" name="pass" id="elem_auth_password" class="text">
+                        <div id="error_auth_password" class="error"></div>
+                    </li>
+                    <li class="distant last">
+                        <input type="hidden" id="self" name="self" value="">
+                        <button type="submit" at_auth="auth_form_enter_click" onclick="submitLogin(''); return false;" id="auth-button" class="action-button gradient">Войти</button>
+                        <ul class="aux-links">
+                            <li><a href="#" at_auth="auth_form_forgot_pass" onclick="return openUserModal('user_pwrecover_inline');return false;">Напомнить пароль</a></li>
+                        </ul>
+                    </li>
+                </ol>
+            </form>
+            <div class="socnet-auth">
+                Вы также можете воспользоваться своим логином на одном из популярных сайтов:
+                <ul>
+                    <li class="vkontakte">
+                        <a href="#" at_auth="auth_form_vk_enter" onclick="return socialAuthClick('vkontakte', 'modal_auth')"></a>
+                    </li>
+                    <li class="facebook">
+                        <a href="#" at_auth="auth_form_facebook_enter" onclick="return socialAuthClick('facebook', 'modal_auth')"></a>
+                    </li>
+                    <li class="twitter">
+                        <a href="#" at_auth="auth_form_twitter_enter" onclick="return socialAuthClick('twitter', 'modal_auth')"></a>
+                    </li>
+                    <li class="yandex last">
+                        <a href="#" at_auth="auth_form_yandex_enter" onclick="return socialAuthClick('yandex', 'modal_auth')"></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <a at_auth="auth_form_close_click" onclick="Runner.at_action(this);" class="link-close bright jqmClose"></a>
+    </div>
+</auth>
+<div id="modal_reg" class="modal_window modal_reg jqmWindow jqmID6" style="z-index: 20000; display: none;">
+        <div class="modal-wrapper">
+            <span class="h2i">Регистрация на ivi.ru</span>
+                <ul class="aux-links">
+                    <li><a href="#" at_auth="reg_form_have_account" onclick="return openModal('auth')">У меня уже есть логин на ivi.ru</a></li>
+                </ul>
+            <form action="/user/ajax/register/" method="post" id="register">
+                <input id="elem_reg_partner" type="hidden" name="partner" value="">
+                <ol>
+                    <li>
+                        <label for="elem_reg_email" class="block">E-mail</label>
+                        <input type="text" name="email" id="elem_reg_email" class="text wide">
+                        <div id="error_reg_email" class="error"></div>
+                        <p class="small">На ваш e-mail мы вышлем пароль, но вы также можете указать его <span class="clickable" onclick="$('#password-line').toggle(); return false;">самостоятельно</span></p>
+                    </li>
+                    <li id="password-line" class="password-line">
+                        <label for="elem_reg_password" class="block">Пароль</label>
+                        <input type="password" name="pass" id="elem_reg_password" class="text wide">
+                        <div id="error_reg_password" class="error"></div>
+                        <p>
+                            <input type="checkbox" id="elem_reg_show-password" class="nice-checkbox">
+                            <label for="elem_reg_show-password">Показать пароль</label>
+                        </p>
+                    </li>
+                    <li>
+                        <label for="elem_reg_code" class="block">Введите текст с картинки</label>
+                        <input type="text" name="challenge" id="elem_reg_code" class="text narrow"><span id="captcha_holder"><img id="captcha" class="code" style="" src="http://captcha.ivi.ru/image?code=captcha_212.112.100.210_1411975120.35_48114"></span>
+                        <input type="hidden" id="captcha_code" name="code" data-url="http://captcha.ivi.ru/" value="captcha_212.112.100.210_1411975120.35_48114">
+                        <div id="error_reg_code" class="error"></div>
+                        <p class="small"><span class="clickable" at_auth="reg_form_change_captcha" onclick="reloadCaptcha(); return false;">Показать другую</span></p>
+                    </li>
+                    <li class="small-text">
+                        Нажимая кнопку «Зарегистрироваться», вы в полном объеме принимаете условия <a href="/info/-/agreement/" target="_blank">пользовательского соглашения</a> и <a href="/pages/confidentional/" target="_blank">политики конфиденциальности</a>.
+                    </li>
+                    <li class="near">
+                        <input type="checkbox" at_auth="reg_form_mailing" name="subscribe" id="elem_reg_subscribe" checked="" class="nice-checkbox" value="1">
+                        <label for="elem_reg_subscribe">Хочу узнавать о киноновинках на ivi.ru</label>
+                    </li>
+                    <li class="distant last">
+                        <input type="hidden" id="self" name="self" value="aHR0cDovL3d3dy5pdmkucnUv">
+                        <button type="submit" at_auth="reg_form_login_click" onclick="submitRegister(''); return false;" id="register_button" class="action-button gradient">Зарегистрироваться</button>
+                    </li>
+                </ol>
+                <input type="hidden" name="redirect" id="register_redirect_url" value="">
+            </form>
+            <div class="socnet-auth">
+                Вы также можете воспользоваться своим логином на одном из популярных сайтов:
+                <ul>
+                    <li class="vkontakte">
+                        <a href="#" at_auth="reg_form_vk_enter" onclick="return socialAuthClick('vkontakte', 'modal_auth');"></a>
+                    </li>
+                    <li class="facebook">
+                        <a href="#" at_auth="reg_form_facebook_enter" onclick="return socialAuthClick('facebook', 'modal_auth');"></a>
+                    </li>
+                    <li class="twitter">
+                        <a href="#" at_auth="reg_form_twitter_enter" onclick="return socialAuthClick('twitter', 'modal_auth');"></a>
+                    </li>
+                    <li class="yandex last">
+                        <a href="#" at_auth="reg_form_yandex_enter" onclick="return socialAuthClick('yandex', 'modal_auth');"></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <a at_auth="reg_form_close_click" onclick="Runner.at_action(this);" class="link-close bright jqmClose"></a>
+    </div>

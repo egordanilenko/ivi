@@ -73,7 +73,7 @@ class user extends model {
 		if ( empty($user) ) {
 			$error = 10;
 		} else {
-			if ( $user->getPassword()!=$user->password_encrypt($password) ) {
+			if ( $user->password!=$user->password_encrypt($password) ) {
 				$error = 11;
 			}
 		}

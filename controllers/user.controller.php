@@ -2,36 +2,45 @@
 class userController extends controller {
 
 	public function login() {
-			// Есди пользователь уже залогинен, ничего не делаем
-		if ( $this->user->getId() ) {
-			$this->redirect( config::get('userDefaultController'), config::get('userDefaultAction') );
-		}
+		$this->setContext('json');
+		// Есди пользователь уже залогинен, ничего не делаем
+		// if ( $this->user->getId() ) {
+		// 	$this->redirect( 'index', 'index');
+		// }
 
-		if ( !request::isPost() ) {
-			return;
-		}
-
-		$login = request::post('login');
-		$password = request::post('password');
+		// if ( !request::isPost() ) {
+		// 	return;
+		// }
+		$login = request::get('email');
+		$password = request::get('pass');
 
 		// Если в $_POST есть логин, пытаемся залогиниться
-		$error = $this->user->login($login, $password);
+		$user = current(user::find('login="'.$login.'"'));
+		if(!empty($user))
+		{
+			if($user->getPassword() == $password)
+			{
+				$user->setCookies();
+				$error = 0;
+			}
+			else
+				$error = 1;
+		}
+		else
+			$error = 1;
 
 		// Если успешно, то перебрасываем на дефолтную страницу для зарегистрированного пользователя, иначе показываем /templates/user/login.tpl и ошибку
-		if ( $error===0 ) {
-			$this->redirect( config::get('userDefaultController'), config::get('userDefaultAction') );
-		} else {
 			return array(
-				'error'=>'Неверный логин или пароль',
+				'error'=> $error,
+				'message'=>'Неверный логин или пароль',
 			);
-		}
 	}
 
 	public function logout() {
 		$this->user->logout();
 
 			// перебрасываем на дефолтную страницу для незалогиненого пользователя
-		$this->redirect('user', 'login');
+		$this->redirect('index', 'index');
 	}
 
 
