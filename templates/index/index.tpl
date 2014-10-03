@@ -1,8 +1,3 @@
-<script type="text/javascript">
-$(document).ready(function($) {
-    $('body').addClass('start alt-price-plates');
-});
-</script>
 <div id="wrapper" class="png full-height">
     <div class="shadows"></div>
     <div class="one-column">
@@ -28,18 +23,20 @@ $(document).ready(function($) {
                             <span class="note"><?=$slide['film']->note ?></span>
                             <span class="h3i"><a href="http://www.ivi.ru<?=$this->link('index','watch').'&film='?>103456"><?=$slide['film']->film_name?></a></span>
 
-                            <div class="age-rating"><?=$slide['film']->age ?>+</div>
+                            <div class="age-rating"><?=$slide['film']->age ?>+ </div>
                             <div class="scale-rating size11">
                                 <div style="width: <?=$slide['film']->raiting?>%"></div>
                             </div>
 
                             <div class="text">
                                 <!-- <img src="http://img.ivi.ru/static/promotest/858d5e8f263014f4e1bd357c1ea145de.png?filever=e5a6ffc80f3954066132af919125812c" alt="" itemprop="image"> -->
-                                <?=$slide['film']->description?>
+                                <!-- <p> -->
+                                    <?=$slide['film']->desciption?>
+                                <!-- </p> -->
                             </div>
                         </div>
                         <div class="action-button-wrapper">
-                            <a href="<?=$this->link('index','watch').'&film='.$slide['film']->codeid?>" class="action-button gradient icon-view button-view">Смотреть <?=(($slide['film']->price > 0) ? 'Смотреть за '.$slide['film']->price.' сом' : '')?></a>
+                            <a href="<?=$this->link('index','watch').'&film='.$slide['film']->codeid?>" class="action-button gradient icon-view button-view">Смотреть <?=(($slide['film']->price > 0) ? 'за '.$slide['film']->price.' сом' : '')?></a>
                             <a href="#" data-id="<?php echo $slide['film']->codeid ?>" class="action-button dim gradient icon-favorite promo-button-favorite button-favorite fav">В очередь</a>
                         </div>
                     </div>
@@ -204,10 +201,12 @@ $(document).ready(function($) {
                             <p class="more">
                                 <a class="underlined" href="<?=$this->link('index','films').'&sort=views'?>">Показать еще</a>
                             </p>
-                        </div>    </div>
+                        </div>
+                    </div>
 
                     <div class="extra-col">
                         <!-- Блок "Продолжить просмотр" -->
+                        <?php if(!$this->user->getId()):?>
                         <div class="cblock movie-stack">
                             <div id="movie-stack-teaser" class="clickable">
                                 <span class="h2i">Войдите для того, чтобы</span>
@@ -219,38 +218,24 @@ $(document).ready(function($) {
                             </div>
                             <ul class="auth-nav">
                                 <li><a onclick="return openModal('auth');" href="#">Войти</a></li>
-                                <li><a onclick="showReg();
-                                        return false;" href="#">Зарегистрироваться</a></li>
+                                <li><a onclick="showReg();return false;" href="#">Зарегистрироваться</a></li>
                             </ul>
                         </div>
-                        <!-- Верхние тизеры в боковой колонке -->
-                        <div class="cblock sidecol-teaser">
-                            <!--  AdRiver code START. Type:100x100 Site: ivi SZ: index PZ: 0 BN: 0 -->
-                            <script><!--
-                            var RndNum4NoCash = Math.round(Math.random() * 1000000000);
-                                var ar_Tail = 'unknown';
-                                if (document.referrer)
-                                    ar_Tail = escape(document.referrer);
-                                document.write(
-                                        '<iframe src="http://ad.adriver.ru/cgi-bin/erle.cgi?'
-                                        + 'sid=147544&sz=index&target=top&w=220&h=159&bt=2&pz=0&rnd=' + RndNum4NoCash + '&tail256=' + ar_Tail
-                                        + '" frameborder=0 vspace=0 hspace=0 width=220 height=159 marginwidth=0'
-                                        + ' marginheight=0 scrolling=no></iframe>');
-                                //--></script>
-                            <noscript>
-                            <a href="http://ad.adriver.ru/cgi-bin/click.cgi?sid=147544&sz=index&bt=2&pz=0&rnd=1591162330" target=_top>
-                                <img src="http://ad.adriver.ru/cgi-bin/rle.cgi?sid=147544&sz=index&bt=2&pz=0&rnd=1591162330" alt="-AdRiver-" border=0 width=220 height=159></a>
-                            </noscript>
-                            <!--  AdRiver code END  -->    <div class="gift-teaser">
-                                <a id="activation_gift">Активировать сертификат</a>
+                    <?php else: ?>
+                        <div class="cblock movie-stack">
+                            <span class="h2i">Вы хотели посмотреть</span>
+                            <div class="disclaimer">В вашей очереди на просмотр пока нет ни одного фильма</div>
+                            <div class="description">
+                                <div class="text">Добавьте любой фильм для&nbsp;дальнейшего просмотра&nbsp;одним кликом</div>
                             </div>
                         </div>
+                    <?php endif; ?>
                     </div>
-                </div>            <div class="content-line">
+                </div>
+                <div class="content-line">
                     <div class="description" itemprop="description">
                         <div class="expandable description-text" id="description-text">
                             <div class="content-wrapper">
-                                <a href="<?php echo $this->link('admin','index') ?>">asdasd</a>
                                 <h1>Бесплатный онлайн кинотеатр ivi.ru: фильмы в хорошем  качестве  всегда приносят настоящее удовольствие </h1>
                                 <p>Случалось ли вам отказаться от  просмотра интересного фильма из-за того, что его показывали в  неудобное время?<br>
                                     Приходилось ли искать в сети интернет,  где смотреть фильмы онлайн? А спорить с домашними из-за выбора кино для просмотра по ТВ?<br>
@@ -272,7 +257,7 @@ $(document).ready(function($) {
                         </div>
                     </div>
                 </div>
-                <div class="content-line" id="recommendation_explanation">
+               <!--  <div class="content-line" id="recommendation_explanation">
                     <div class="incut-line-wrapper">
                         <div class="incut-line recommend-related films-gallery-wrapper">
                             <span class="h2i">Рекомендуем лично вам</span>
@@ -296,7 +281,7 @@ $(document).ready(function($) {
                                 <div class="hover-area"><div class="scrollable-wrapper">
                                         <ul
                                             data-wsource="index_watchingnow" class="films-gallery light" id="watching_now_carousel">
-                                            <!-- --><li class="vb-item element-selector"
+                                            <li class="vb-item element-selector"
                                                         data-id="103332"
                                                         data-type="content"
                                                         >
@@ -319,7 +304,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>103332" title="Паранойя">Паранойя</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="103329"
                                                                      data-type="content"
                                                                      >
@@ -342,7 +327,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>103329" title="Горько!">Горько!</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="64241"
                                                                      data-type="content"
                                                                      >
@@ -365,7 +350,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>64241" title="Последний самурай">Последний самурай</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="97238"
                                                                      data-type="content"
                                                                      >
@@ -388,7 +373,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>97238" title="Обещать – не значит жениться">Обещать – не значит жениться</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="65061"
                                                                      data-type="content"
                                                                      >
@@ -411,7 +396,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>65061" title="Флаги наших отцов">Флаги наших отцов</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="64203"
                                                                      data-type="content"
                                                                      >
@@ -434,7 +419,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>64203" title="Мальчишник 2: Из Вегаса в Бангкок">Мальчишник 2: Из Вегаса в Бангкок</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="113453"
                                                                      data-type="content"
                                                                      >
@@ -457,7 +442,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>113453" title="Делай ноги">Делай ноги</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="64243"
                                                                      data-type="content"
                                                                      >
@@ -480,7 +465,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>64243" title="Я - легенда">Я - легенда</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="94440"
                                                                      data-type="content"
                                                                      >
@@ -503,7 +488,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>94440" title="Мадагаскар 3">Мадагаскар 3</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="65046"
                                                                      data-type="content"
                                                                      >
@@ -526,7 +511,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>65046" title="Ходят слухи">Ходят слухи</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="65031"
                                                                      data-type="content"
                                                                      >
@@ -549,7 +534,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>65031" title="Вундеркинды">Вундеркинды</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="112478"
                                                                      data-type="content"
                                                                      >
@@ -572,7 +557,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>112478" title="История Золушки">История Золушки</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="87191"
                                                                      data-type="content"
                                                                      >
@@ -595,7 +580,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>87191" title="Трансформеры: Месть падших">Трансформеры: Месть падших</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="87497"
                                                                      data-type="content"
                                                                      >
@@ -618,7 +603,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>87497" title="Хозяин морей: На краю Земли">Хозяин морей: На краю Земли</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="64257"
                                                                      data-type="content"
                                                                      >
@@ -641,7 +626,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>64257" title="10 000 лет до н.э.">10 000 лет до н.э.</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="96103"
                                                                      data-type="content"
                                                                      >
@@ -664,7 +649,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>96103" title="Хичкок">Хичкок</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="65030"
                                                                      data-type="content"
                                                                      >
@@ -687,7 +672,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>65030" title="Долгая помолвка">Долгая помолвка</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="113777"
                                                                      data-type="content"
                                                                      >
@@ -710,7 +695,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>113777" title="Скуби-Ду и меч самурая">Скуби-Ду и меч самурая</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="87490"
                                                                      data-type="content"
                                                                      >
@@ -733,7 +718,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>87490" title="Элвин и бурундуки">Элвин и бурундуки</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="113909"
                                                                      data-type="content"
                                                                      >
@@ -756,7 +741,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>113909" title="Аферисты">Аферисты</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="98471"
                                                                      data-type="content"
                                                                      >
@@ -779,7 +764,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>98471" title="Родительский беспредел">Родительский беспредел</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="65074"
                                                                      data-type="content"
                                                                      >
@@ -802,7 +787,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>65074" title="Люди в черном 3">Люди в черном 3</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="109950"
                                                                      data-type="content"
                                                                      >
@@ -825,7 +810,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>109950" title="Отважная">Отважная</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="103467"
                                                                      data-type="content"
                                                                      >
@@ -848,7 +833,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>103467" title="Перевозчик">Перевозчик</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="114390"
                                                                      data-type="content"
                                                                      >
@@ -871,7 +856,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>114390" title="Откровения лучших порномоделей">Откровения лучших порномоделей</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="112639"
                                                                      data-type="content"
                                                                      >
@@ -894,7 +879,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>112639" title="Любовь к собакам обязательна">Любовь к собакам обязательна</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="113829"
                                                                      data-type="content"
                                                                      >
@@ -917,7 +902,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>113829" title="Дитя с Марса">Дитя с Марса</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="110238"
                                                                      data-type="content"
                                                                      >
@@ -940,7 +925,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>110238" title="Дитя тьмы">Дитя тьмы</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="106271"
                                                                      data-type="content"
                                                                      >
@@ -963,7 +948,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>106271" title="Никки, дьявол – младший">Никки, дьявол – младший</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="87621"
                                                                      data-type="content"
                                                                      >
@@ -986,7 +971,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>87621" title="Ледниковый период 4: Континентальный дрейф">Ледниковый период 4: Континентальный дрейф</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="106303"
                                                                      data-type="content"
                                                                      >
@@ -1009,7 +994,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>106303" title="Впритык">Впритык</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="64250"
                                                                      data-type="content"
                                                                      >
@@ -1032,7 +1017,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>64250" title="Пункт назначения 3">Пункт назначения 3</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="64252"
                                                                      data-type="content"
                                                                      >
@@ -1055,7 +1040,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>64252" title="Темный рыцарь">Темный рыцарь</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="103294"
                                                                      data-type="content"
                                                                      >
@@ -1078,7 +1063,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>103294" title="Капитан Филлипс">Капитан Филлипс</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="103364"
                                                                      data-type="content"
                                                                      >
@@ -1101,7 +1086,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>103364" title="Самолеты">Самолеты</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="105908"
                                                                      data-type="content"
                                                                      >
@@ -1124,7 +1109,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>105908" title="Потустороннее">Потустороннее</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="101232"
                                                                      data-type="content"
                                                                      >
@@ -1147,7 +1132,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>101232" title="Транс">Транс</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="64791"
                                                                      data-type="content"
                                                                      >
@@ -1170,7 +1155,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>64791" title="Оправданная жестокость">Оправданная жестокость</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="64978"
                                                                      data-type="content"
                                                                      >
@@ -1193,7 +1178,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>64978" title="Придурки из Хаззарда">Придурки из Хаззарда</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="113840"
                                                                      data-type="content"
                                                                      >
@@ -1216,7 +1201,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>113840" title="Жизнь как дом">Жизнь как дом</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="65032"
                                                                      data-type="content"
                                                                      >
@@ -1239,7 +1224,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>65032" title="Труп невесты">Труп невесты</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="64228"
                                                                      data-type="content"
                                                                      >
@@ -1262,7 +1247,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>64228" title="Час пик 3">Час пик 3</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="113859"
                                                                      data-type="content"
                                                                      >
@@ -1285,7 +1270,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>113859" title="Сердца в Атлантиде">Сердца в Атлантиде</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="103304"
                                                                      data-type="content"
                                                                      >
@@ -1308,7 +1293,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>103304" title="Волк с Уолл-стрит">Волк с Уолл-стрит</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="98613"
                                                                      data-type="content"
                                                                      >
@@ -1331,7 +1316,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>98613" title="Эпик">Эпик</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="103385"
                                                                      data-type="content"
                                                                      >
@@ -1354,7 +1339,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>103385" title="Росомаха: Бессмертный">Росомаха: Бессмертный</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="64235"
                                                                      data-type="content"
                                                                      >
@@ -1377,7 +1362,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>64235" title="Матрица: Революция">Матрица: Революция</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="115473"
                                                                      data-type="content"
                                                                      >
@@ -1400,7 +1385,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>115473" title="Телеведущий: И снова здравствуйте">Телеведущий: И снова здравствуйте</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="65035"
                                                                      data-type="content"
                                                                      >
@@ -1423,7 +1408,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>65035" title="Сириана">Сириана</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="97712"
                                                                      data-type="content"
                                                                      >
@@ -1446,7 +1431,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>97712" title="Ангелы и Демоны">Ангелы и Демоны</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="103296"
                                                                      data-type="content"
                                                                      >
@@ -1469,7 +1454,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>103296" title="Холодное сердце">Холодное сердце</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="113788"
                                                                      data-type="content"
                                                                      >
@@ -1492,7 +1477,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>113788" title="Дублеры">Дублеры</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="87598"
                                                                      data-type="content"
                                                                      >
@@ -1515,7 +1500,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>87598" title="Кот в сапогах">Кот в сапогах</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="106099"
                                                                      data-type="content"
                                                                      >
@@ -1538,7 +1523,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>106099" title="Мажестик">Мажестик</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="64234"
                                                                      data-type="content"
                                                                      >
@@ -1561,7 +1546,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>64234" title="Мисс Конгениальность 2: Прекрасна и опасна">Мисс Конгениальность 2: Прекрасна и опасна</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="87628"
                                                                      data-type="content"
                                                                      >
@@ -1584,7 +1569,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>87628" title="Значит, война">Значит, война</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="103331"
                                                                      data-type="content"
                                                                      >
@@ -1607,7 +1592,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>103331" title="Уцелевший">Уцелевший</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="93888"
                                                                      data-type="content"
                                                                      >
@@ -1630,7 +1615,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>93888" title="Диктатор">Диктатор</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="103291"
                                                                      data-type="content"
                                                                      >
@@ -1653,7 +1638,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>103291" title="Starперцы">Starперцы</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="106310"
                                                                      data-type="content"
                                                                      >
@@ -1676,7 +1661,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>106310" title="Мех: Воображаемый портрет Дианы Арбус">Мех: Воображаемый портрет Дианы Арбус</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="112187"
                                                                      data-type="content"
                                                                      >
@@ -1699,7 +1684,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>112187" title="Ловец снов">Ловец снов</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="87510"
                                                                      data-type="content"
                                                                      >
@@ -1722,7 +1707,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>87510" title="Дьявол носит Prada">Дьявол носит Prada</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="113847"
                                                                      data-type="content"
                                                                      >
@@ -1745,7 +1730,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>113847" title="Кит Киттредж: Загадка американской девочки">Кит Киттредж: Загадка американской девочки</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="106040"
                                                                      data-type="content"
                                                                      >
@@ -1768,7 +1753,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>106040" title="Отсчет убийств">Отсчет убийств</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="64244"
                                                                      data-type="content"
                                                                      >
@@ -1791,7 +1776,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>64244" title="Гарри Поттер и Кубок огня">Гарри Поттер и Кубок огня</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="109287"
                                                                      data-type="content"
                                                                      >
@@ -1814,7 +1799,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>109287" title="Медвежонок Винни и его друзья">Медвежонок Винни и его друзья</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="113474"
                                                                      data-type="content"
                                                                      >
@@ -1837,7 +1822,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>113474" title="Мы – одна команда">Мы – одна команда</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="64256"
                                                                      data-type="content"
                                                                      >
@@ -1860,7 +1845,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>64256" title="Бэтмен: Начало">Бэтмен: Начало</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="110655"
                                                                      data-type="content"
                                                                      >
@@ -1883,7 +1868,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>110655" title="Держи ритм">Держи ритм</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="113487"
                                                                      data-type="content"
                                                                      >
@@ -1906,7 +1891,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>113487" title="Том и Джерри: Трепещи, Усатый!">Том и Джерри: Трепещи, Усатый!</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="112167"
                                                                      data-type="content"
                                                                      >
@@ -1929,7 +1914,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>112167" title="Анализируй то">Анализируй то</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="113850"
                                                                      data-type="content"
                                                                      >
@@ -1952,7 +1937,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>113850" title="Джон Кью">Джон Кью</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="97983"
                                                                      data-type="content"
                                                                      >
@@ -1975,7 +1960,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>97983" title="Монстры на каникулах">Монстры на каникулах</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="102458"
                                                                      data-type="content"
                                                                      >
@@ -1998,7 +1983,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>102458" title="Астрал: Глава 2">Астрал: Глава 2</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="83419"
                                                                      data-type="content"
                                                                      >
@@ -2021,7 +2006,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>83419" title="Человек-паук 2">Человек-паук 2</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="87520"
                                                                      data-type="content"
                                                                      >
@@ -2044,7 +2029,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>87520" title="День, когда Земля остановилась">День, когда Земля остановилась</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="113915"
                                                                      data-type="content"
                                                                      >
@@ -2067,7 +2052,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>113915" title="Битва Титанов">Битва Титанов</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="106166"
                                                                      data-type="content"
                                                                      >
@@ -2090,7 +2075,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>106166" title="Зеленый Фонарь">Зеленый Фонарь</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="114087"
                                                                      data-type="content"
                                                                      >
@@ -2113,7 +2098,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>114087" title="Довольно слов">Довольно слов</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="99160"
                                                                      data-type="content"
                                                                      >
@@ -2136,7 +2121,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>99160" title="Трансформеры 3: Темная сторона Луны">Трансформеры 3: Темная сторона Луны</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="98505"
                                                                      data-type="content"
                                                                      >
@@ -2159,7 +2144,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>98505" title="Университет монстров">Университет монстров</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="112595"
                                                                      data-type="content"
                                                                      >
@@ -2182,7 +2167,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>112595" title="Если свекровь – монстр…">Если свекровь – монстр…</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="97239"
                                                                      data-type="content"
                                                                      >
@@ -2205,7 +2190,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>97239" title="Гарри Поттер и Принц-полукровка">Гарри Поттер и Принц-полукровка</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="87480"
                                                                      data-type="content"
                                                                      >
@@ -2228,7 +2213,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>87480" title="Фонтан">Фонтан</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="113795"
                                                                      data-type="content"
                                                                      >
@@ -2251,7 +2236,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>113795" title="Гордость и слава">Гордость и слава</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="112689"
                                                                      data-type="content"
                                                                      >
@@ -2274,7 +2259,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>112689" title="Огненная стена">Огненная стена</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="64259"
                                                                      data-type="content"
                                                                      >
@@ -2297,7 +2282,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>64259" title="Идеальный шторм">Идеальный шторм</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="64240"
                                                                      data-type="content"
                                                                      >
@@ -2320,7 +2305,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>64240" title="Властелин колец: Братство кольца">Властелин колец: Братство кольца</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="64239"
                                                                      data-type="content"
                                                                      >
@@ -2343,7 +2328,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>64239" title="Властелин колец: Возвращение Короля">Властелин колец: Возвращение Короля</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="113797"
                                                                      data-type="content"
                                                                      >
@@ -2366,7 +2351,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>113797" title="Одержимость">Одержимость</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="113886"
                                                                      data-type="content"
                                                                      >
@@ -2389,7 +2374,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>113886" title="Окончательный анализ">Окончательный анализ</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="113793"
                                                                      data-type="content"
                                                                      >
@@ -2412,7 +2397,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>113793" title="Пути и путы">Пути и путы</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="113907"
                                                                      data-type="content"
                                                                      >
@@ -2435,7 +2420,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>113907" title="Даффи Дак: Охотники за чудовищами">Даффи Дак: Охотники за чудовищами</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="99165"
                                                                      data-type="content"
                                                                      >
@@ -2458,7 +2443,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>99165" title="Поймай меня, если сможешь">Поймай меня, если сможешь</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="109966"
                                                                      data-type="content"
                                                                      >
@@ -2481,7 +2466,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>109966" title="Вторжение">Вторжение</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="100120"
                                                                      data-type="content"
                                                                      >
@@ -2504,7 +2489,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>100120" title="Американская история &quot;ИКС&quot; (Американская история Х)">Американская история "ИКС" (Американская история Х)</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="113911"
                                                                      data-type="content"
                                                                      >
@@ -2527,7 +2512,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>113911" title="Теория заговора">Теория заговора</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="64232"
                                                                      data-type="content"
                                                                      >
@@ -2550,7 +2535,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>64232" title="Тринадцать друзей Оушена">Тринадцать друзей Оушена</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="105966"
                                                                      data-type="content"
                                                                      >
@@ -2573,7 +2558,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>105966" title="Дикий, дикий Запад">Дикий, дикий Запад</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="64227"
                                                                      data-type="content"
                                                                      >
@@ -2596,7 +2581,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>64227" title="Секс в большом городе">Секс в большом городе</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="113863"
                                                                      data-type="content"
                                                                      >
@@ -2619,7 +2604,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>113863" title="Гамлет">Гамлет</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="113749"
                                                                      data-type="content"
                                                                      >
@@ -2642,7 +2627,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>113749" title="Выбор судьбы">Выбор судьбы</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="106084"
                                                                      data-type="content"
                                                                      >
@@ -2665,7 +2650,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>106084" title="Совокупность лжи">Совокупность лжи</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="113803"
                                                                      data-type="content"
                                                                      >
@@ -2688,7 +2673,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>113803" title="Расплата">Расплата</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="113811"
                                                                      data-type="content"
                                                                      >
@@ -2711,7 +2696,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>113811" title="Подростки как подростки">Подростки как подростки</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="97247"
                                                                      data-type="content"
                                                                      >
@@ -2734,7 +2719,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>97247" title="Кокаин">Кокаин</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="65056"
                                                                      data-type="content"
                                                                      >
@@ -2757,7 +2742,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>65056" title="Мгновения Нью-Йорка">Мгновения Нью-Йорка</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="98382"
                                                                      data-type="content"
                                                                      >
@@ -2780,7 +2765,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>98382" title="Джанго освобожденный">Джанго освобожденный</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="113784"
                                                                      data-type="content"
                                                                      >
@@ -2803,7 +2788,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>113784" title="Ромео должен умереть">Ромео должен умереть</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="115226"
                                                                      data-type="content"
                                                                      >
@@ -2826,7 +2811,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>115226" title="Над законом">Над законом</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="113994"
                                                                      data-type="content"
                                                                      >
@@ -2849,7 +2834,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>113994" title="Вся президентская рать">Вся президентская рать</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="110061"
                                                                      data-type="content"
                                                                      >
@@ -2872,7 +2857,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>110061" title="Напряги извилины">Напряги извилины</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="99914"
                                                                      data-type="content"
                                                                      >
@@ -2895,7 +2880,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>99914" title="Таинственная река">Таинственная река</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="113906"
                                                                      data-type="content"
                                                                      >
@@ -2918,7 +2903,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>113906" title="Опасные связи">Опасные связи</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="98614"
                                                                      data-type="content"
                                                                      >
@@ -2941,7 +2926,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>98614" title="Кадры">Кадры</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="64247"
                                                                      data-type="content"
                                                                      >
@@ -2964,7 +2949,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>64247" title="Гарри Поттер и философский камень">Гарри Поттер и философский камень</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="96144"
                                                                      data-type="content"
                                                                      >
@@ -2987,7 +2972,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>96144" title="Заклятие">Заклятие</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="87494"
                                                                      data-type="content"
                                                                      >
@@ -3010,7 +2995,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>87494" title="Ледниковый период">Ледниковый период</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="105736"
                                                                      data-type="content"
                                                                      >
@@ -3033,7 +3018,7 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>105736" title="Тачки 2">Тачки 2</a>
                                                 </strong>
-                                            </li><!-- --><!-- --><li class="vb-item element-selector"
+                                            </li><li class="vb-item element-selector"
                                                                      data-id="113805"
                                                                      data-type="content"
                                                                      >
@@ -3056,11 +3041,13 @@ $(document).ready(function($) {
                                                 <strong>
                                                     <a href="<?=$this->link('index','watch').'&film='?>113805" title="Эпидемия">Эпидемия</a>
                                                 </strong>
-                                            </li><!-- -->                    </ul>
+                                            </li>                    </ul>
                                     </div></div>
                             </div>
                         </div></div>
-                </div>            <div id="subtab_recommended" class="subtab subtab_recommended subtab_recommended_data">
+                </div>
+
+                <div id="subtab_recommended" class="subtab subtab_recommended subtab_recommended_data">
                     <div id="subtab_recommended_tagpairs">
                     </div>
                 </div>
@@ -3071,84 +3058,89 @@ $(document).ready(function($) {
 
                 </script>
                 <div class="content-line" id="infinite_rate">
-                    <div class="incut-line-wrapper">
-                        <div class="incut-line user-votes">
-                            <div class="title-wrap">
-                                <span class="h2i">Оцените, чтобы уточнить рекомендации</span>
-                                <a class="open-vote-help-block" title="Как это работает?" href="#"></a>
-                            </div>
-                            <div class="digits">
-                                <strong>Поставлено оценок:</strong><div id="rates_count">0</div>
-                            </div>
-                            <div class="vote-help-block">
-                                <div class="link-close gray"></div>
-                                <div class="action-text">Оценивайте фильмы, выставляя оценку звездочками.</div>
-                                <div class="img-wrap">
-                                    <img src="/images/da/img/user-votes-showcase.png" alt="">
+                        <div class="incut-line-wrapper">
+                            <div class="incut-line user-votes">
+                                <div class="title-wrap">
+                                    <span class="h2i">Оцените, чтобы уточнить рекомендации</span>
+                                    <a class="open-vote-help-block" title="Как это работает?" href="#"></a>
                                 </div>
-                                <div class="result-text">Чем больше оценок вы поставите, тем&nbsp;точнее&nbsp;будут&nbsp;ваши&nbsp;рекомендации.</div>
-                            </div>
-                            <ul class="films-gallery medium bordered inf_ul" data-wsource="index_tune_recommendations">
-                            </ul>
-                            <div class="overlay-login-to-save" id="rates_overlay" style="display:none">
-                                <span class="h2i">Войдите, чтобы сохранить оценки и получить рекомендации</span>
-                                <p>Чем больше фильмов вы оцените, тем точнее будут персональные рекомендации</p>
-                                <a id="user_votes_login" href="#" class="action-button gradient large">Войти</a>
+                                <div class="digits">
+                                    <strong>Поставлено оценок:</strong><div id="rates_count">0</div>
+                                </div>
+                                <div class="vote-help-block">
+                                    <div class="link-close gray"></div>
+                                    <div class="action-text">Оценивайте фильмы, выставляя оценку звездочками.</div>
+                                    <div class="img-wrap">
+                                        <img src="/images/da/img/user-votes-showcase.png" alt="">
+                                    </div>
+                                    <div class="result-text">Чем больше оценок вы поставите, тем&nbsp;точнее&nbsp;будут&nbsp;ваши&nbsp;рекомендации.</div>
+                                </div>
+                                <ul class="films-gallery medium bordered inf_ul" data-wsource="index_tune_recommendations">
+                                </ul>
+                                <div class="overlay-login-to-save" id="rates_overlay" style="display:none">
+                                    <span class="h2i">Войдите, чтобы сохранить оценки и получить рекомендации</span>
+                                    <p>Чем больше фильмов вы оцените, тем точнее будут персональные рекомендации</p>
+                                    <a id="user_votes_login" href="#" class="action-button gradient large">Войти</a>
+                                </div>
                             </div>
                         </div>
-                    </div></div>            <div class="content-line"><div class="incut-line-wrapper">
-                        <div class="incut-line ivi-on-devices">
-                            <div class="deviсes-page-link"><a href="devices/">Страница устройств</a></div>
-                            <ul class="wrap-urls">
-                                <li>
-                                    <strong><a href="devices/phones/">Мы на мобильных:</a></strong>
-                                    <ul class="devices-list">
-                                        <li><a href="/info/-/android/">Android</a></li>
-                                        <li><a href="/info/-/ios/">iPhone/iPad</a></li>
-                                        <li><a href="/info/-/winphone/">Windows Phone</a></li>
-                                        <li><a href="/info/-/windows8/">Windows 8</a></li>
-                                        <li><a href="/info/-/bada/">Samsung bada</a></li>
-                                        <li><a href="/info/-/symbian/">Nokia (Symbian^3)</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <strong><a href="devices/tvs/">Мы на ТВ:</a></strong>
-                                    <ul class="devices-list">
-                                        <li><a href="/info/-/samsungtv/">Samsung</a></li>
-                                        <li><a href="/info/-/lgtv/">LG</a></li>
-                                        <li><a href="/info/-/philipstv/">Philips</a></li>
-                                        <li><a href="/info/-/panasonictv/">Panasonic</a></li>
-                                        <li><a href="/info/-/toshibatv/">Toshiba</a></li>
-                                        <li><a href="/devices/stbs/dune/">Dune HD</a></li>
-                                        <li><a href="/info/-/iconbit/">iconBIT</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                    </div></div>            <div class="content-line">
-                    <div class="selections-gallery-filters">
-                        <div class="block-head">
-                            <span class="h2i"><a href="/videos/podborki/">Подборки</a></span>
-                            <div id="hiddden_selection_block" class="hidden">
-                                <a href="/videos/podborki/cult_shestidesyatye/">Культовые фильмы 60-х</a>    <a href="/videos/podborki/postapocalyptic-films/">Постапокалиптические фильмы</a>    <a href="/videos/podborki/kulinary/">Кулинарная подборка</a>    <a href="/videos/podborki/madeinukraine/">Сделано на Украине</a>    <a href="/videos/podborki/hd_series/">Сериалы в HD</a>    <a href="/videos/podborki/stylish_movies/">Стильное кино</a>    <a href="/videos/podborki/sitcoms/">Комедийные сериалы</a>    <a href="/videos/podborki/medical_dramas/">Медицинские драмы</a>    <a href="/videos/podborki/new-year-cartoons/">Новогодние мультфильмы</a>    <a href="/videos/podborki/movie_franchises/">Лучшие кинофраншизы</a>    <a href="/videos/podborki/movies-about-Sherlock-Holmes/">Фильмы о Шерлоке Холмсе</a>    <a href="/videos/podborki/redbull/">Red Bull</a>    <a href="/videos/podborki/movies_about_tigers/">Фильмы про тигров</a>    <a href="/videos/podborki/best_cooking_shows/">Лучшие рецепты</a>    <a href="/videos/podborki/bbc_documentaries/">Документальные фильмы BBC</a>    <a href="/videos/podborki/musicals/">Фильмы про танцы</a>    <a href="/videos/podborki/doomsday_movies/">Фильмы о конце света</a>    <a href="/videos/podborki/biker_movies/">Фильмы про мотоциклы</a>    </div>                <div id="filters-wrapper-position" class="filters-wrapper-position"></div>
-                            <div class="filters-wrapper" id="selections-filter">
-                                <ul class="filter-nav" id="selection-categories-list">
-                                    <li><a href="/videos/podborki/" data-value="all">Любая категория</a></li>
+                </div>
+                    <div class="content-line">
+                        <div class="incut-line-wrapper">
+                            <div class="incut-line ivi-on-devices">
+                                <div class="deviсes-page-link"><a href="devices/">Страница устройств</a></div>
+                                <ul class="wrap-urls">
                                     <li>
-                                        <a href="/videos/podborki/movies/" data-value="movies">Фильмы</a>
-                                    </li>    <li>
-                                        <a href="/videos/podborki/series/" data-value="series">Сериалы</a>
-                                    </li>    <li>
-                                        <a href="/videos/podborki/animation/" data-value="animation">Мультфильмы</a>
-                                    </li>    <li>
-                                        <a href="/videos/podborki/programs/" data-value="programs">Программы</a>
-                                    </li>                    </ul>
+                                        <strong><a href="devices/phones/">Мы на мобильных:</a></strong>
+                                        <ul class="devices-list">
+                                            <li><a href="/info/-/android/">Android</a></li>
+                                            <li><a href="/info/-/ios/">iPhone/iPad</a></li>
+                                            <li><a href="/info/-/winphone/">Windows Phone</a></li>
+                                            <li><a href="/info/-/windows8/">Windows 8</a></li>
+                                            <li><a href="/info/-/bada/">Samsung bada</a></li>
+                                            <li><a href="/info/-/symbian/">Nokia (Symbian^3)</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <strong><a href="devices/tvs/">Мы на ТВ:</a></strong>
+                                        <ul class="devices-list">
+                                            <li><a href="/info/-/samsungtv/">Samsung</a></li>
+                                            <li><a href="/info/-/lgtv/">LG</a></li>
+                                            <li><a href="/info/-/philipstv/">Philips</a></li>
+                                            <li><a href="/info/-/panasonictv/">Panasonic</a></li>
+                                            <li><a href="/info/-/toshibatv/">Toshiba</a></li>
+                                            <li><a href="/devices/stbs/dune/">Dune HD</a></li>
+                                            <li><a href="/info/-/iconbit/">iconBIT</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
+                    <div class="content-line">
+                        <div class="selections-gallery-filters">
+                            <div class="block-head">
+                                <span class="h2i"><a href="/videos/podborki/">Подборки</a></span>
+                                <div id="hiddden_selection_block" class="hidden">
+                                    <a href="/videos/podborki/cult_shestidesyatye/">Культовые фильмы 60-х</a>    <a href="/videos/podborki/postapocalyptic-films/">Постапокалиптические фильмы</a>    <a href="/videos/podborki/kulinary/">Кулинарная подборка</a>    <a href="/videos/podborki/madeinukraine/">Сделано на Украине</a>    <a href="/videos/podborki/hd_series/">Сериалы в HD</a>    <a href="/videos/podborki/stylish_movies/">Стильное кино</a>    <a href="/videos/podborki/sitcoms/">Комедийные сериалы</a>    <a href="/videos/podborki/medical_dramas/">Медицинские драмы</a>    <a href="/videos/podborki/new-year-cartoons/">Новогодние мультфильмы</a>    <a href="/videos/podborki/movie_franchises/">Лучшие кинофраншизы</a>    <a href="/videos/podborki/movies-about-Sherlock-Holmes/">Фильмы о Шерлоке Холмсе</a>    <a href="/videos/podborki/redbull/">Red Bull</a>    <a href="/videos/podborki/movies_about_tigers/">Фильмы про тигров</a>    <a href="/videos/podborki/best_cooking_shows/">Лучшие рецепты</a>    <a href="/videos/podborki/bbc_documentaries/">Документальные фильмы BBC</a>    <a href="/videos/podborki/musicals/">Фильмы про танцы</a>    <a href="/videos/podborki/doomsday_movies/">Фильмы о конце света</a>    <a href="/videos/podborki/biker_movies/">Фильмы про мотоциклы</a>    </div>                <div id="filters-wrapper-position" class="filters-wrapper-position"></div>
+                                <div class="filters-wrapper" id="selections-filter">
+                                    <ul class="filter-nav" id="selection-categories-list">
+                                        <li><a href="/videos/podborki/" data-value="all">Любая категория</a></li>
+                                        <li>
+                                            <a href="/videos/podborki/movies/" data-value="movies">Фильмы</a>
+                                        </li>    <li>
+                                            <a href="/videos/podborki/series/" data-value="series">Сериалы</a>
+                                        </li>    <li>
+                                            <a href="/videos/podborki/animation/" data-value="animation">Мультфильмы</a>
+                                        </li>    <li>
+                                            <a href="/videos/podborki/programs/" data-value="programs">Программы</a>
+                                        </li>                    </ul>
+                                </div>
+                            </div>
+                        </div>
                     <div class="main-col">
                         <!-- Блок "Подборки" -->
-                        <div class="content-line selections-line">
+                       <!-- <div class="content-line selections-line">
                             <div class="main-col">
                                 <div class="selections-gallery">
                                     <div id="selections-block-content">
@@ -3189,10 +3181,10 @@ $(document).ready(function($) {
                             </div>
                         </div>
                     </div>
-                    <div class="extra-col">
+                    <div class="extra-col">-->
                         <!-- Рекламный блок в боковой колонке -->
                         <!-- AdRiver code START. Type:240x400 Site: ivi SZ: index PZ: 0 BN: 0 -->
-                        <script type="text/javascript">
+                        <!--<script type="text/javascript">
                             var RndNum4NoCash = Math.round(Math.random() * 1000000000);
                             var ar_Tail = 'unknown';
                             if (document.referrer)
@@ -3208,9 +3200,10 @@ $(document).ready(function($) {
                             <img src="//ad.adriver.ru/cgi-bin/rle.cgi?sid=147544&sz=index&bt=22&pz=0&rnd=449811776" alt="-AdRiver-" border=0 width=240 height=400></a>
                         </noscript>
 
-                        <!-- AdRiver code END -->        </div>
-                </div>            <div class="content-line clear-line-wrapper similar" id="similar-parent">
-
+                        <!-- AdRiver code END -->
+                        <!--</div>
+                </div>
+                <div class="content-line clear-line-wrapper similar" id="similar-parent">
                     <div class="block-head">
                         <span class="h2i">Похожее на самые популярные фильмы ivi.ru</span>
                         <select name="similar" id="similar" class="dropdown-choice rounded">
@@ -3282,18 +3275,12 @@ $(document).ready(function($) {
                         </div>
                     </div>
                 </div>
-                <script>
-                    $(document).ready(function() {
-                        Runner.start({
-                            watchAgainIds: [],
-                            updater_path: 'http://img.ivi.ru/UpdaterSWF.swf'
-                        });
-                    });
-                </script>        </div>
+
+            </div>
         </div>
 
         <div id="flash_updater" class="flash-updater"></div></div>
-</div>
+</div>-->
 <auth>
 <div id="modal_auth" class="modal_window modal_auth jqmWindow">
     <div class="modal-wrapper">
@@ -3315,7 +3302,7 @@ $(document).ready(function($) {
                     </li>
                     <li class="distant last">
                         <input type="hidden" id="self" name="self" value="">
-                        <button type="submit" at_auth="auth_form_enter_click" onclick="submitLogin(''); return false;" id="auth-button" class="action-button gradient">Войти</button>
+                        <button type="submit" at_auth="auth_form_enter_click" onclick="newSubmit(''); return false;" id="auth-button" class="action-button gradient">Войти</button>
                         <ul class="aux-links">
                             <li><a href="#" at_auth="auth_form_forgot_pass" onclick="return openUserModal('user_pwrecover_inline');return false;">Напомнить пароль</a></li>
                         </ul>
@@ -3408,3 +3395,39 @@ $(document).ready(function($) {
         </div>
         <a at_auth="reg_form_close_click" onclick="Runner.at_action(this);" class="link-close bright jqmClose"></a>
     </div>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        Runner.start({
+            watchAgainIds: [],
+            updater_path: 'http://img.ivi.ru/UpdaterSWF.swf'
+        });
+
+       $('body').addClass('start alt-price-plates');
+    });
+    function newSubmit(re)
+    {
+        var email = $('#elem_auth_email').val();
+        var pass = $('#elem_auth_password').val();
+
+        console.log(email)
+        EllyCore.ajax({
+            url: EllyCore.url('index', 'login'),
+            data: {email: email, pass: pass, context: 'json'},
+            success: function(data) {
+                console.log(data.error)
+                $("#error_auth_email").html("");
+                $("#error_auth_password").html("");
+                if (data.error == 1)
+                {
+                    $("#error_auth_password").html(data.message);
+                }
+                else {
+                    console.log('okey')
+                    $('#elem_auth_email').val('');
+                    $('#elem_auth_password').val('');
+                    window.location.reload();
+                }
+            },
+        });
+    }
+    </script>

@@ -27,7 +27,7 @@
       </li>
       <li>
         <div class="item">
-          <a href="<?=$this->link('index','films')?>&group=2" title="">Сериалы<?=$this->user->getId()?></a>
+          <a href="<?=$this->link('index','films')?>&group=2" title="">Сериалы</a>
         </div>
         <div class="sub-nav-wrapper">
           <ul class="sub-main-nav">

@@ -20,8 +20,8 @@ class userController extends controller {
 		{
 			if($user->getPassword() == $password)
 			{
-				$user->setCookies();
-				$error = 0;
+				//$user->setCookies();
+				$error = 1;
 			}
 			else
 				$error = 1;

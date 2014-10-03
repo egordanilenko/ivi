@@ -46,18 +46,7 @@
 					<input name="director" type="text" class="form-control input-md" required>
 				</div>
 			</div>
-			<div class="form-group">
-				<label class="col-md-4 control-label" >Актеры</label>
-				<div class="col-md-8">
-					<input name="actors" type="text" class="form-control input-md" required>
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="col-md-4 control-label" >Описание</label>
-				<div class="col-md-8">
-					<input name="desciption" type="text" class="form-control input-md" required>
-				</div>
-			</div>
+
 			<div class="form-group">
 				<label class="col-md-4 control-label" >Дата добавления</label>
 				<div class="col-md-8">
@@ -132,6 +121,20 @@
 					<input name="note" type="text" class="form-control input-md" required>
 				</div>
 			</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-md-4 control-label" >Описание</label>
+				<div class="col-md-8">
+					<textarea name="desciption" rows="10" class="form-control input-md" required></textarea>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-md-4 control-label" >Актеры</label>
+				<div class="col-md-8">
+					<textarea name="actors" rows="4" class="form-control input-md" required></textarea>
+				</div>
 			</div>
 
 			<div class="clearfix"></div>

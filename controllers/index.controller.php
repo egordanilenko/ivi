@@ -81,4 +81,41 @@ class indexController extends controller {
 	{
 
 	}
+
+public function login()
+{
+	$this->setContext('json');
+		// Есди пользователь уже залогинен, ничего не делаем
+		// if ( $this->user->getId() ) {
+		// 	$this->redirect( 'index', 'index');
+		// }
+
+		// if ( !request::isPost() ) {
+		// 	return;
+		// }
+		$login = request::get('email');
+		$password = request::get('pass');
+
+		// Если в $_POST есть логин, пытаемся залогиниться
+		$user = current(user::find('login="'.$login.'"'));
+		if(!empty($user))
+		{
+			if($user->getPassword() == $password)
+			{
+				$user->setCookies();
+				$error = 0;
+			}
+			else
+				$error = 1;
+		}
+		else
+			$error = 1;
+
+		// Если успешно, то перебрасываем на дефолтную страницу для зарегистрированного пользователя, иначе показываем /templates/user/login.tpl и ошибку
+			return array(
+				'error'=> $error,
+				'message'=>'Неверный логин или пароль',
+			);
+}
+
 }

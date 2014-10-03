@@ -1,4 +1,4 @@
-<?php if ( $this->user->getId() ): ?>
+<?php //if ( $this->user->getId() ): ?>
 <?php
   $url = $_SERVER["REQUEST_URI"];
 ?>
@@ -43,4 +43,4 @@
     </div>
 
 
-<?php endif ?>
+<?php //endif ?>
